@@ -7,14 +7,30 @@
   "targets": {
     ".NETCoreApp,Version=v8.0": {
       "20240823_HW_Delegate/1.0.0": {
+        "dependencies": {
+          "GenerateArray": "1.0.0"
+        },
         "runtime": {
           "20240823_HW_Delegate.dll": {}
+        }
+      },
+      "GenerateArray/1.0.0": {
+        "runtime": {
+          "GenerateArray.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }
   },
   "libraries": {
     "20240823_HW_Delegate/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "GenerateArray/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

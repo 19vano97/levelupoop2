@@ -8,15 +8,15 @@ public class PublisherEvent
     private int _iterationCount;
     private NewIterationDelegate? _newIterationHandlers;
 
-    public void Subscribe(NewIterationDelegate handler)
-    {
-        _newIterationHandlers += handler;
-    }
+    // public void Subscribe(NewIterationDelegate handler)
+    // {
+    //     _newIterationHandlers += handler;
+    // }
     
-    public void Unsubscribe(NewIterationDelegate handler)
-    {
-        _newIterationHandlers -= handler;
-    }
+    // public void Unsubscribe(NewIterationDelegate handler)
+    // {
+    //     _newIterationHandlers -= handler;
+    // }
 
     public event NewIterationDelegate NewIterationEvent
     {

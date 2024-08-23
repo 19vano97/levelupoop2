@@ -9,6 +9,7 @@ public abstract class SortDoubleArray
     public SortDoubleArray(double[] arrayToSort)
     {
         _sortArray = (double[])arrayToSort.Clone();
+        // _sortArray = arrayToSort;
     }
 
     public double[] SortArray

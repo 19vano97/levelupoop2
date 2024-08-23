@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OceanLife", "OceanLife\Ocea
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "20240823_Lesson_Publisher", "20240823_Lesson_Publisher\20240823_Lesson_Publisher.csproj", "{E2E0276D-9C54-4646-A903-23CAF4ACA57E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Generate1dArray", "Library\Generate1dArray\Generate1dArray.csproj", "{67FBDAEA-F81D-4245-9F10-E127C1F742C4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenerateArray", "Library\Generate1dArray\GenerateArray.csproj", "{67FBDAEA-F81D-4245-9F10-E127C1F742C4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

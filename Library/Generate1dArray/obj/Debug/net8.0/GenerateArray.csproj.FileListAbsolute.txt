@@ -1,0 +1,12 @@
+/Users/ivanhontar/Work/levelUp/levelupoop2/Library/Generate1dArray/bin/Debug/net8.0/GenerateArray.deps.json
+/Users/ivanhontar/Work/levelUp/levelupoop2/Library/Generate1dArray/bin/Debug/net8.0/GenerateArray.dll
+/Users/ivanhontar/Work/levelUp/levelupoop2/Library/Generate1dArray/bin/Debug/net8.0/GenerateArray.pdb
+/Users/ivanhontar/Work/levelUp/levelupoop2/Library/Generate1dArray/obj/Debug/net8.0/GenerateArray.GeneratedMSBuildEditorConfig.editorconfig
+/Users/ivanhontar/Work/levelUp/levelupoop2/Library/Generate1dArray/obj/Debug/net8.0/GenerateArray.AssemblyInfoInputs.cache
+/Users/ivanhontar/Work/levelUp/levelupoop2/Library/Generate1dArray/obj/Debug/net8.0/GenerateArray.AssemblyInfo.cs
+/Users/ivanhontar/Work/levelUp/levelupoop2/Library/Generate1dArray/obj/Debug/net8.0/GenerateArray.csproj.CoreCompileInputs.cache
+/Users/ivanhontar/Work/levelUp/levelupoop2/Library/Generate1dArray/obj/Debug/net8.0/GenerateArray.sourcelink.json
+/Users/ivanhontar/Work/levelUp/levelupoop2/Library/Generate1dArray/obj/Debug/net8.0/GenerateArray.dll
+/Users/ivanhontar/Work/levelUp/levelupoop2/Library/Generate1dArray/obj/Debug/net8.0/refint/GenerateArray.dll
+/Users/ivanhontar/Work/levelUp/levelupoop2/Library/Generate1dArray/obj/Debug/net8.0/GenerateArray.pdb
+/Users/ivanhontar/Work/levelUp/levelupoop2/Library/Generate1dArray/obj/Debug/net8.0/ref/GenerateArray.dll
