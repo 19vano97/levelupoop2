@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    "net8.0": {}
+    "net8.0": {
+      "GenerateRandomArray/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/GenerateRandomArray.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GenerateRandomArray.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "GenerateRandomArray/1.0.0": {
+      "type": "project",
+      "path": "../Library/GenerateRandomArray/GenerateRandomArray.csproj",
+      "msbuildProject": "../Library/GenerateRandomArray/GenerateRandomArray.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net8.0": []
+    "net8.0": [
+      "GenerateRandomArray >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "/Users/ivanhontar/.nuget/packages/": {}
@@ -31,7 +50,11 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "/Users/ivanhontar/Work/levelUp/levelupoop2/Library/GenerateRandomArray/GenerateRandomArray.csproj": {
+              "projectPath": "/Users/ivanhontar/Work/levelUp/levelupoop2/Library/GenerateRandomArray/GenerateRandomArray.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

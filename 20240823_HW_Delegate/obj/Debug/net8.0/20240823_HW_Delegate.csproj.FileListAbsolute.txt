@@ -13,7 +13,7 @@
 /Users/ivanhontar/Work/levelUp/levelupoop2/20240823_HW_Delegate/obj/Debug/net8.0/20240823_HW_Delegate.pdb
 /Users/ivanhontar/Work/levelUp/levelupoop2/20240823_HW_Delegate/obj/Debug/net8.0/20240823_HW_Delegate.genruntimeconfig.cache
 /Users/ivanhontar/Work/levelUp/levelupoop2/20240823_HW_Delegate/obj/Debug/net8.0/ref/20240823_HW_Delegate.dll
-/Users/ivanhontar/Work/levelUp/levelupoop2/20240823_HW_Delegate/bin/Debug/net8.0/GenerateArray.dll
-/Users/ivanhontar/Work/levelUp/levelupoop2/20240823_HW_Delegate/bin/Debug/net8.0/GenerateArray.pdb
 /Users/ivanhontar/Work/levelUp/levelupoop2/20240823_HW_Delegate/obj/Debug/net8.0/20240823_HW_Delegate.csproj.AssemblyReference.cache
 /Users/ivanhontar/Work/levelUp/levelupoop2/20240823_HW_Delegate/obj/Debug/net8.0/20240823.F6E2DA52.Up2Date
+/Users/ivanhontar/Work/levelUp/levelupoop2/20240823_HW_Delegate/bin/Debug/net8.0/GenerateRandomArray.dll
+/Users/ivanhontar/Work/levelUp/levelupoop2/20240823_HW_Delegate/bin/Debug/net8.0/GenerateRandomArray.pdb

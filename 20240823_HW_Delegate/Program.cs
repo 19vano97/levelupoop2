@@ -1,12 +1,12 @@
 ﻿using _20240823_HW_Delegate;
-using Generate1dArray;
+using GenerateRandomArray;
 
 internal class Program
 {
     private static void Main(string[] args)
     {
-        GenerateDouble1dArray d1Gen = new GenerateDouble1dArray(10000);
-        double[] d1 = (double[])d1Gen.Darray.Clone();
+        GenerateDouble1d d1Gen = new GenerateDouble1d(10000);
+        double[] d1 = (double[])d1Gen.GenArray.Clone();
         // PrintDoubleArray(d1);
 
         BubbleSort b1 = new BubbleSort(d1);

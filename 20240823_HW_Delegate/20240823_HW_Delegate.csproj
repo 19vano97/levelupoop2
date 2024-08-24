@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Library\Generate1dArray\GenerateArray.csproj" />
+    <ProjectReference Include="..\Library\GenerateRandomArray\GenerateRandomArray.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
