@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OceanLife", "OceanLife\Ocea
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "20240823_Lesson_Publisher", "20240823_Lesson_Publisher\20240823_Lesson_Publisher.csproj", "{E2E0276D-9C54-4646-A903-23CAF4ACA57E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenerateArray", "Library\Generate1dArray\GenerateArray.csproj", "{67FBDAEA-F81D-4245-9F10-E127C1F742C4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenerateRandomArray", "Library\GenerateRandomArray\GenerateRandomArray.csproj", "{E4BB8267-97F6-44D5-BC1E-584C861B4AB2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,15 +31,15 @@ Global
 		{E2E0276D-9C54-4646-A903-23CAF4ACA57E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E2E0276D-9C54-4646-A903-23CAF4ACA57E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E2E0276D-9C54-4646-A903-23CAF4ACA57E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{67FBDAEA-F81D-4245-9F10-E127C1F742C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{67FBDAEA-F81D-4245-9F10-E127C1F742C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{67FBDAEA-F81D-4245-9F10-E127C1F742C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{67FBDAEA-F81D-4245-9F10-E127C1F742C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4BB8267-97F6-44D5-BC1E-584C861B4AB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4BB8267-97F6-44D5-BC1E-584C861B4AB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4BB8267-97F6-44D5-BC1E-584C861B4AB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4BB8267-97F6-44D5-BC1E-584C861B4AB2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{67FBDAEA-F81D-4245-9F10-E127C1F742C4} = {923A1122-7963-413E-91AC-482FD6DEB303}
+		{E4BB8267-97F6-44D5-BC1E-584C861B4AB2} = {923A1122-7963-413E-91AC-482FD6DEB303}
 	EndGlobalSection
 EndGlobal

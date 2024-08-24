@@ -1,0 +1,20 @@
+@startuml
+class Ocean {
+    + Ocean()
+    + Size : int <<get>>
+    + NumPrey : int <<get>> <<set>>
+    + NumObstacles : int <<get>> <<set>>
+    + NumPredator : int <<get>> <<set>>
+    + Init() : void
+    + Update() : void
+    + MoveNextIteration() : void
+    + SyncNumbersOfFish() : void
+    + AddPrey(num:int) : void
+    + AddPrey() : void
+    + AddPredator(num:int) : void
+    + AddPredator() : void
+    + AddObstacles(num:int) : void
+    + AddObstacles() : void
+    + MoveAnimals() : void
+}
+@enduml

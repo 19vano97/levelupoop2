@@ -1,0 +1,7 @@
+@startuml
+class QuickSort {
+    + QuickSort(arrayToSort:double[])
+    + <<override>> Sort() : void
+}
+SortDoubleArray <|-- QuickSort
+@enduml

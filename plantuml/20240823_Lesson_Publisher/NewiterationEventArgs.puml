@@ -1,0 +1,7 @@
+@startuml
+class NewiterationEventArgs {
+    + iteration : int <<get>>
+    + NewiterationEventArgs(i:int)
+}
+EventArgs <|-- NewiterationEventArgs
+@enduml

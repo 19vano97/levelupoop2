@@ -21,6 +21,6 @@ public class BubbleSort : SortDoubleArray
                     _sortArray[k + 1] = temp;
                 }
             }
-        }
+        }  
     }
 }

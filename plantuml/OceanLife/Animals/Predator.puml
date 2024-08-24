@@ -1,0 +1,18 @@
+@startuml
+class Predator {
+    + Predator(x:int, y:int)
+    + Predator(coord:Coordinates)
+    + Predator(p:Predator)
+    + TimeToFeed : int <<get>> <<set>>
+    + <<override>> ReduceTimeToFeed() : void
+    + <<override>> GetTimeToFeed() : int
+    + <<override>> RestartTimeToFeed() : void
+    + <<override>> DoesShartkillInIteration() : bool
+    + <<override>> SetSharkKill(killed:bool) : void
+}
+Prey <|-- Predator
+IShowKill <|-- Predator
+Predator --> "KillPlace" Coordinates
+Predator --> "Victim" Image
+Predator --> "Killer" Image
+@enduml

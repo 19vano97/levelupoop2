@@ -35,10 +35,10 @@ public class QuickSort : SortDoubleArray
             _sortArray[i + 1] = _sortArray[high];
             _sortArray[high] = temp1;
 
-            int pi = i + 1;
+            int index = i + 1;
 
-            QuickSortMehod(low, pi - 1);
-            QuickSortMehod(pi + 1, high);
+            QuickSortMehod(low, index - 1);
+            QuickSortMehod(index + 1, high);
         }
     }
 }

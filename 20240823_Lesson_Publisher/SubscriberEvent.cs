@@ -5,17 +5,17 @@ namespace _20240823_Lesson_Publisher;
 public class SubscriberEvent
 {
     private int _allIterationCount;
-    private Publisher _p;
+    private PublisherEvent _p;
 
-    public SubscriberEvent(Publisher p)
+    public SubscriberEvent(PublisherEvent p)
     {
         _p = p;
-        _p.Subscribe(IterationCounterHandler);
+        _p.NewIterationEvent += IterationCounterHandler;
     }
 
     public void Dispose()
     {
-        _p.Unsubscribe(IterationCounterHandler);
+        _p.NewIterationEvent -= IterationCounterHandler;
     }
 
     public void IterationCounterHandler(int iteration)

@@ -5,9 +5,9 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        PublisherEventArgs p1 = new PublisherEventArgs(5);
+        PublisherEvent p1 = new PublisherEvent(5);
 
-        SubscriberEventArgs s1 = new SubscriberEventArgs(p1);
+        SubscriberEvent s1 = new SubscriberEvent(p1);
 
         p1.Run();
 
@@ -15,14 +15,14 @@ internal class Program
         System.Console.WriteLine("---------------------------------");
         System.Console.WriteLine();
 
-        p1.NewIterationEvent += NewIterationStaticHandlerEventArgs;
+        p1.NewIterationEvent += NewIterationStaticHandler;
         p1.Run();
 
         System.Console.WriteLine();
         System.Console.WriteLine("---------------------------------");
         System.Console.WriteLine();
 
-        p1.NewIterationEvent += NewIterationStaticHandler2EventArgs;
+        p1.NewIterationEvent += NewIterationStaticHandler2;
         p1.Run();
 
         System.Console.WriteLine("Count: {0}", s1.AllIterationCount);

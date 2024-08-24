@@ -1,0 +1,17 @@
+@startuml
+abstract class Cell {
+    + Cell(x:int, y:int)
+    + Cell(x:int, y:int, im:Image)
+    + Cell(coord:Coordinates)
+    + Cell(c:Cell)
+    + <<virtual>> ReduceTimeToReproduce() : void
+    + <<virtual>> ReduceTimeToFeed() : void
+    + <<virtual>> GetTimeToReproduce() : int
+    + <<virtual>> GetTimeToFeed() : int
+    + <<virtual>> RestartTimeToFeed() : void
+    + <<virtual>> DoesShartkillInIteration() : bool
+    + <<virtual>> SetSharkKill(killed:bool) : void
+}
+Cell --> "Coord" Coordinates
+Cell --> "DefaultImage" Image
+@enduml

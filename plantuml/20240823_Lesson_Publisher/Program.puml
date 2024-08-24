@@ -1,0 +1,8 @@
+@startuml
+class Program {
+    + {static} NewIterationStaticHandler(iteration:int) : void
+    + {static} NewIterationStaticHandler2(iteration:int) : void
+    + {static} NewIterationStaticHandlerEventArgs(sender:object, args:NewiterationEventArgs) : void
+    + {static} NewIterationStaticHandler2EventArgs(sender:object, args:NewiterationEventArgs) : void
+}
+@enduml

@@ -1,0 +1,10 @@
+@startuml
+class Obstacle {
+    + Obstacle(x:int, y:int)
+    + Obstacle(coord:Coordinates)
+    + Obstacle(o:Obstacle)
+    + <<override>> ReduceTimeToReproduce() : void
+    + <<override>> GetTimeToReproduce() : int
+}
+Cell <|-- Obstacle
+@enduml

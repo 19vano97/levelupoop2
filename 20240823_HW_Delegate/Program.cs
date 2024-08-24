@@ -5,23 +5,28 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        GenerateDouble1dArray d1Gen = new GenerateDouble1dArray(7);
+        GenerateDouble1dArray d1Gen = new GenerateDouble1dArray(10000);
         double[] d1 = (double[])d1Gen.Darray.Clone();
-        PrintDoubleArray(d1);
+        // PrintDoubleArray(d1);
 
         BubbleSort b1 = new BubbleSort(d1);
-        b1.Sort();
-        PrintDoubleArray(b1.SortArray);
+        b1.StartTime += PrintTime;
+        b1.FinishTime += PrintTime;
+        b1.RunSort();
+        
+        // PrintDoubleArray(b1.SortArray);
 
         InsertSort i1 = new InsertSort(d1);
-        i1.Sort();
-        PrintDoubleArray(i1.SortArray);
+        i1.StartTime += PrintTime;
+        i1.FinishTime += PrintTime;
+        i1.RunSort();
+        // PrintDoubleArray(i1.SortArray);
         
         QuickSort q1 = new QuickSort(d1);
-        q1.Sort();
-        PrintDoubleArray(q1.SortArray);
-
-
+        q1.StartTime += PrintTime;
+        q1.FinishTime += PrintTime;
+        q1.RunSort();
+        // PrintDoubleArray(q1.SortArray);
     }
 
     public static void PrintDoubleArray(double[] darray)
@@ -32,5 +37,12 @@ internal class Program
         }
 
         System.Console.WriteLine();
+    }
+
+    public static void PrintTime(object sender, DateTime time)
+    {
+        System.Console.WriteLine("-------------------------");
+        System.Console.WriteLine(time.ToString("hh:mm:ss.ffffff"));
+        System.Console.WriteLine("-------------------------");
     }
 }

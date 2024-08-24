@@ -1,0 +1,12 @@
+@startuml
+class Prey {
+    + Prey(x:int, y:int)
+    + Prey(x:int, y:int, im:Image)
+    + Prey(coord:Coordinates)
+    + Prey(p:Prey)
+    + TimeToReproduce : int <<get>> <<set>>
+    + <<override>> ReduceTimeToReproduce() : void
+    + <<override>> GetTimeToReproduce() : int
+}
+Cell <|-- Prey
+@enduml

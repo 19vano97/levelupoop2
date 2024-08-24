@@ -1,0 +1,6 @@
+@startuml
+class GenerateDouble1dArray {
+    + GenerateDouble1dArray(num:int)
+}
+Generate1dArray <|-- GenerateDouble1dArray
+@enduml
