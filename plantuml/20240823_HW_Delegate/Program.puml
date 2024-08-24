@@ -1,5 +1,8 @@
 @startuml
 class Program {
     + {static} PrintDoubleArray(darray:double[]) : void
+    + {static} PrintTime(sender:object, time:DateTime) : void
+    + {static} PrintTime(sortType:string, time:DateTime) : void
+    + {static} PrintTimeDiff(sortType:string, time:TimeSpan) : void
 }
 @enduml

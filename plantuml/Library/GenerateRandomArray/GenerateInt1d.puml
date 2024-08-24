@@ -1,0 +1,7 @@
+@startuml
+class GenerateInt1d {
+    + GenerateInt1d(numOfElements:int)
+    + <<override>> Generate() : void
+}
+GenerateArray <|-- GenerateInt1d
+@enduml

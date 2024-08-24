@@ -28,12 +28,14 @@ public class QuickSort : SortDoubleArray
                     double temp = _sortArray[i];
                     _sortArray[i] = _sortArray[j];
                     _sortArray[j] = temp;
+                    _swapCount?.Invoke(this, i);
                 }
             }
 
             double temp1 = _sortArray[i + 1];
             _sortArray[i + 1] = _sortArray[high];
             _sortArray[high] = temp1;
+            _exchangeCount?.Invoke(this, i);
 
             int index = i + 1;
 

@@ -13,8 +13,10 @@
 !include ./20240823_HW_Delegate/QuickSort.puml
 !include ./20240823_HW_Delegate/Subscriber.puml
 !include ./20240823_HW_Delegate/SortDoubleArray.puml
+!include ./20240823_HW_Delegate/SwapCountIn1dArrayDelegate.puml
 !include ./20240823_HW_Delegate/BubbleSort.puml
 !include ./20240823_HW_Delegate/IterationDateTimeDelegate.puml
+!include ./20240823_HW_Delegate/ExchangeCountIn1dArrayDelegate.puml
 !include ./20240823_HW_Delegate/Program.puml
 !include ./OceanLife/UI.puml
 !include ./OceanLife/Game.puml
@@ -27,8 +29,11 @@
 !include ./OceanLife/Obstacle.puml
 !include ./OceanLife/Ocean.puml
 !include ./OceanLife/Program.puml
-!include ./Library/Generate1dArray/Generate1dArray.puml
-!include ./Library/Generate1dArray/GenerateDouble1dArray.puml
+!include ./Library/GenerateRandomArray/GenerateArray.puml
+!include ./Library/GenerateRandomArray/GenerateInt2d.puml
+!include ./Library/GenerateRandomArray/GenerateInt1d.puml
+!include ./Library/GenerateRandomArray/GenerateDouble2d.puml
+!include ./Library/GenerateRandomArray/GenerateDouble1d.puml
 !include ./OceanLife/Animals/Prey.puml
 !include ./OceanLife/Animals/Predator.puml
 !include ./OceanLife/Interfaces/IShowKill.puml
@@ -41,9 +46,7 @@
 !include ./OceanLife/obj/Debug/net8.0/OceanLife.GlobalUsings.g.puml
 !include ./OceanLife/obj/Debug/net8.0/.NETCoreApp,Version=v8.0.AssemblyAttributes.puml
 !include ./OceanLife/obj/Debug/net8.0/OceanLife.AssemblyInfo.puml
-!include ./Library/Generate1dArray/obj/Debug/net8.0/.NETCoreApp,Version=v8.0.AssemblyAttributes.puml
-!include ./Library/Generate1dArray/obj/Debug/net8.0/Generate1dArray.GlobalUsings.g.puml
-!include ./Library/Generate1dArray/obj/Debug/net8.0/GenerateArray.AssemblyInfo.puml
-!include ./Library/Generate1dArray/obj/Debug/net8.0/Generate1dArray.AssemblyInfo.puml
-!include ./Library/Generate1dArray/obj/Debug/net8.0/GenerateArray.GlobalUsings.g.puml
+!include ./Library/GenerateRandomArray/obj/Debug/net8.0/.NETCoreApp,Version=v8.0.AssemblyAttributes.puml
+!include ./Library/GenerateRandomArray/obj/Debug/net8.0/GenerateRandomArray.GlobalUsings.g.puml
+!include ./Library/GenerateRandomArray/obj/Debug/net8.0/GenerateRandomArray.AssemblyInfo.puml
 @enduml

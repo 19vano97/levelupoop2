@@ -14,11 +14,14 @@ public class BubbleSort : SortDoubleArray
         {
             for (int k = 0; k < _sortArray.Length - i - 1; k++)
             {
+                _exchangeCount?.Invoke(this, i);
+                
                 if (_sortArray[k] > _sortArray[k + 1])
                 {
                     double temp = _sortArray[k];
                     _sortArray[k] = _sortArray[k + 1];
                     _sortArray[k + 1] = temp;
+                    _swapCount?.Invoke(this, i);
                 }
             }
         }  

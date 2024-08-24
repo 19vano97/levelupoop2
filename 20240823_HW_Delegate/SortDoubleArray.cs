@@ -7,6 +7,8 @@ public abstract class SortDoubleArray
     protected double[] _sortArray;
     protected IterationDateTimeDelegate _startTime;
     protected IterationDateTimeDelegate _finishTime;
+    protected ExchangeCountIn1dArrayDelegate _exchangeCount;
+    protected SwapCountIn1dArrayDelegate _swapCount;
 
     public SortDoubleArray(double[] arrayToSort)
     {
@@ -28,6 +30,18 @@ public abstract class SortDoubleArray
     {
         add => _finishTime += value;
         remove => _finishTime -= value;
+    }
+
+    public event ExchangeCountIn1dArrayDelegate ExchangeCount
+    {
+        add => _exchangeCount += value;
+        remove => _exchangeCount -= value;
+    }
+
+    public event SwapCountIn1dArrayDelegate SwapCount
+    {
+        add => _swapCount += value;
+        remove => _swapCount -= value;
     }
 
     public abstract void Sort();

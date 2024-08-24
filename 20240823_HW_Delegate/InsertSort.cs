@@ -17,12 +17,15 @@ public class InsertSort : SortDoubleArray
 
             for (int y = i - 1; y >= 0; y--)
             {
+                _exchangeCount?.Invoke(this, i);
+
                 if (_sortArray[y] > currentValue)
                 {
                     double temp = _sortArray[y];
                     _sortArray[y] = _sortArray[y + 1];
                     _sortArray[y + 1] = temp;
                     insertIndex = y;
+                    _swapCount?.Invoke(this, i);
                 }
                 else
                 {

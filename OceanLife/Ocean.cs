@@ -416,7 +416,7 @@ public class Ocean
                 {
                     string s = ("Indexes are not equal to coords i = ", i, "k = ", k, 
                         "Coord.X = ", _cells[i, k].Coord.X, "Coord.Y = ", _cells[i, k].Coord.Y). ToString();
-                    throw new Exception(s);
+                    throw new InvalidOperationException(s);
                 }
             }
         }
