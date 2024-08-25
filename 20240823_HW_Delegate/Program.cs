@@ -8,7 +8,6 @@ internal class Program
     {
         GenerateDouble1d d1Gen = new GenerateDouble1d(100000);
         double[] d1 = (double[])d1Gen.GenArray.Clone();
-        // PrintDoubleArray(d1);
 
         BubbleSort b1 = new BubbleSort(d1);
         Subscriber sBubble = new Subscriber(b1);
@@ -16,8 +15,6 @@ internal class Program
         PrintTimeDiff("Bubble", sBubble.CalcDiffStartFinishTime());
         System.Console.WriteLine("Bubble total exchanges: {0}", sBubble.ExchangeCount);
         System.Console.WriteLine("Bubble total swaps: {0}", sBubble.SwapCount);
-        
-        // PrintDoubleArray(b1.SortArray);
 
         InsertSort i1 = new InsertSort(d1);
         Subscriber sInsert = new Subscriber(i1);
