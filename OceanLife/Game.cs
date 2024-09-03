@@ -17,12 +17,12 @@ public class Game
         do
         {
             Console.Clear();
-
+            oc.KillConfirm += UI.DisplayKills;
             oc.MoveAnimals();
 
             UI.DisplayCells(oc);
             UI.DisplayStats(oc, iteration);
-            UI.DisplayKills(oc);
+            // UI.DisplayKills(oc);
 
             totalKills += BL.GetKillsByIteration(oc);
 

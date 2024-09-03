@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Runtime.CompilerServices;
+using OceanLife.Delegates;
 
 namespace OceanLife;
 
@@ -12,6 +13,7 @@ public class Ocean
         protected int _numPrey;
         protected int _numObstacles;
         protected int _numPredators;
+        protected KillConfirmDelegate _killConfirm;
 
     #endregion
 
@@ -125,6 +127,12 @@ public class Ocean
 
                 _numPrey = value;
             }
+        }
+
+        public event KillConfirmDelegate KillConfirm
+        {
+            add => _killConfirm += value;
+            remove => _killConfirm -= value;
         }
 
     #endregion
@@ -603,6 +611,11 @@ public class Ocean
         predatorKill.Victim = victim.DefaultImage;
         killer.SetSharkKill(true);
 
+        #region Event KillConfirm
+
+            _killConfirm?.Invoke(this, new Coordinates(x, y), victim, killer);
+            
+        #endregion
     }
 
     public void MoveAnimals()

@@ -75,4 +75,24 @@ public class UI
         Console.SetCursorPosition(x + 30, 0);
         System.Console.WriteLine("Total kills in the current iteration: {0}", showIndex);
     }
+
+    public static void DisplayKills(object sender, Coordinates coord, Cell victim, Cell killer)
+    {
+        int x = 100;
+        int y = 0;
+
+        int showIndex = 1;
+
+        for (int i = 0; i < x; i++)
+        {
+                Console.SetCursorPosition(x + 30, showIndex);
+                
+                System.Console.WriteLine("[{0}, {1}] {2}  killed {3}", coord.X, coord.Y, 
+                            killer.DefaultImage, victim.DefaultImage);
+                showIndex++;
+        }
+
+        Console.SetCursorPosition(x + 30, 0);
+        System.Console.WriteLine("Total kills in the current iteration: {0}", showIndex);
+    }
 }

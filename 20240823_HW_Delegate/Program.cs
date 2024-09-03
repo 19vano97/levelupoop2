@@ -6,7 +6,7 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        GenerateDouble1d d1Gen = new GenerateDouble1d(100000);
+        GenerateDouble1d d1Gen = new GenerateDouble1d(1000);
         double[] d1 = (double[])d1Gen.GenArray.Clone();
 
         BubbleSort b1 = new BubbleSort(d1);

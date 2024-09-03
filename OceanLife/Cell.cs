@@ -47,10 +47,8 @@ public abstract class Cell
 
         public Image DefaultImage
         {
-            get
-            {
-                return _defaultImage;
-            }
+            get => _defaultImage;
+            set => _defaultImage = value;
         }
 
     #endregion
