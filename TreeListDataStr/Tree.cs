@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _TreeListDataStr
+namespace _TreeListDataStr1
 {
     // Search: key --> value
     public class Tree    //: IDictionary !!! Homework
@@ -27,7 +27,7 @@ namespace _TreeListDataStr
 
             if (key < root.Key)
             {
-                Add(ref root.Lefl, key, data);
+                Add(ref root.Left, key, data);
             }
             else
             {
@@ -65,7 +65,7 @@ namespace _TreeListDataStr
 
             if (key < root.Key)
             {
-                return GetNodeByKey(root.Lefl, key);
+                return GetNodeByKey(root.Left, key);
             }
             else
             {
@@ -139,7 +139,7 @@ namespace _TreeListDataStr
                 return;
             }
 
-            ToString(result, root.Lefl, level + 1);
+            ToString(result, root.Left, level + 1);
 
             for (int i = 0; i < level; i++)
             {
@@ -158,14 +158,14 @@ namespace _TreeListDataStr
                 Key = key; 
                 Data = data;
 
-                Lefl = null;
+                Left = null;
                 Right = null;
             }
 
             public int Key;
             public string Data;    // Value
 
-            public Node Lefl;
+            public Node Left;
             public Node Right;
         }
     }

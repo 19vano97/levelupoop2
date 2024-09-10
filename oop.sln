@@ -21,6 +21,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TreeListDataStr", "TreeList
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HashTableDataStr", "HashTableDataStr\HashTableDataStr.csproj", "{01CEC9CF-36FA-4211-BD08-C57C3ABCF272}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OwnExceptions", "OwnExceptions", "{CC35DFDA-9A12-4B3C-975D-A43266191BDB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ListExceptions", "OwnExceptions\ListExceptions\ListExceptions.csproj", "{5C3141AA-5C6C-4189-BE93-2F65034A41DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TreeDataStructure", "Library\TreeDataStructure\TreeDataStructure.csproj", "{8349D34F-479B-48B8-8BD2-6CE746A6224F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,11 +65,21 @@ Global
 		{01CEC9CF-36FA-4211-BD08-C57C3ABCF272}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{01CEC9CF-36FA-4211-BD08-C57C3ABCF272}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{01CEC9CF-36FA-4211-BD08-C57C3ABCF272}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C3141AA-5C6C-4189-BE93-2F65034A41DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C3141AA-5C6C-4189-BE93-2F65034A41DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C3141AA-5C6C-4189-BE93-2F65034A41DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C3141AA-5C6C-4189-BE93-2F65034A41DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8349D34F-479B-48B8-8BD2-6CE746A6224F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8349D34F-479B-48B8-8BD2-6CE746A6224F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8349D34F-479B-48B8-8BD2-6CE746A6224F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8349D34F-479B-48B8-8BD2-6CE746A6224F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{62CA5AA0-8FC3-49E0-9458-F4F4BED57C89} = {923A1122-7963-413E-91AC-482FD6DEB303}
+		{5C3141AA-5C6C-4189-BE93-2F65034A41DC} = {CC35DFDA-9A12-4B3C-975D-A43266191BDB}
+		{8349D34F-479B-48B8-8BD2-6CE746A6224F} = {923A1122-7963-413E-91AC-482FD6DEB303}
 	EndGlobalSection
 EndGlobal

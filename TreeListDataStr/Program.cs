@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TreeDataStructure;
 
 namespace _TreeListDataStr
 {
@@ -10,7 +11,7 @@ namespace _TreeListDataStr
     {
         static void Main(string[] args)
         {
-            Tree t1 = new Tree();
+            TreeList t1 = new TreeList();
 
             t1.Add(20, "Mikola");
             t1.Add(-3, "Alex");
@@ -18,35 +19,59 @@ namespace _TreeListDataStr
             t1.Add(-100, "Dmytro");
             t1.Add(100, "Oleksandr");
             t1.Add(-1000, "Petro");
+            t1.Add(-50, "Test");
+            t1.Add(-75, "Test3");
+            t1.Add(-200, "Test1");
+            t1.Add(-85, "Test4");
             //t1.Add(500);
             //t1.Add(-500);
             //t1.Add(22);
             //t1.Add(4);
             //t1.Add(-2000);
 
-            //#if DEBUG
-            //            t1.Print();
-            //#endif
-            Console.WriteLine(t1);
+            t1.Remove(-200);
 
+            System.Console.WriteLine(t1.Count);
 
-            #region Search by key
+            // Console.ReadKey();
 
-            int k = -1000;
+            // //#if DEBUG
+            // //            t1.Print();
+            // //#endif
+            // //Console.WriteLine(t1);
 
-            if (t1.TryGetValue(k, out string info))
+            System.Console.WriteLine("foreach");
+
+            int i = 0;
+
+            foreach (object item in t1)
             {
-                Console.WriteLine($"[{k}] = {info}");
+                System.Console.WriteLine(item);
+                // i++;
+                // System.Console.WriteLine(i);
             }
-            else
+
+            foreach (var item in t1.Values)
             {
-                Console.WriteLine("Value with {0} key not found!", k);
+                System.Console.WriteLine(item);
             }
 
 
-            #endregion
+            // #region Search by key
 
-            Console.ReadKey(); 
+            // int k = -1000;
+
+            // if (t1.TryGetValue(k, out object info))
+            // {
+            //     Console.WriteLine($"[{k}] = {info}");
+            // }
+            // else
+            // {
+            //     Console.WriteLine("Value with {0} key not found!", k);
+            // }
+
+
+            // #endregion
         }
     }
 }

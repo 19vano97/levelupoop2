@@ -1,18 +1,37 @@
 ﻿using System;
 using System.Collections;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using _ListException;
 
 namespace _DoubleList
 {
     // !!! *** Виконати сортування значень двозв'язкового списку (!!! переміщуємо посилання !!!)
-    public class DoubleLinkedList: IEnumerable
+    public class DoubleLinkedList: IEnumerable, IComparer
     {
         private Item _first = null;
         private Item _last = null;
 
-        public void AddToBegin(int data)
+        private class Item
+        {
+            public Item(object info, Item next = null, Item prev = null)
+            {
+                Info = info;
+                Next = next;
+                Prev = prev;
+            }
+
+            public Item(Item item) : this(item.Info, item.Next, item.Prev)
+            {}
+
+            public object Info { get; set; }    // інформаційна частина
+            public Item Next { get; set; }    // посилання на наступний елемент списку
+            public Item Prev { get; set; }    // посилання на попередній елемент списку
+        }
+
+        public void AddToBegin(object data)
         {
             Item newItem = new Item(data);    // (1)
 
@@ -33,28 +52,47 @@ namespace _DoubleList
 
         public void AddToEnd(int data)
         {
-            // HW
-        }
-
-        public int GetFromBegin()
-        {
-            // HW
-            return 0;
-        }
-
-        public int GetFromEnd()
-        {
-            // ToDo: !!!
-            if (Empty)
+            if (_first == null)
             {
-                throw new InvalidOperationException("List is emplty!");    // має кидатися власний виняток (HW!)
+                _first = new Item(data);
+                _last = _first;
+
+                return;
             }
 
-            int result2 = _last.Info;
+            Item newItem = new Item(data);
+
+            newItem.Prev = _last;
+            _last.Next = newItem;
+            _last = newItem;
+        }
+
+        public object GetFromBegin()
+        {
+            if (_first == null)
+            {
+                throw new EmptyListExceptions("List is empty!");
+            }
+
+            object res = _first.Info;
+
+            _first = _first.Next;
+            _first.Prev = null;
+
+            return res;
+        }
+
+        public object GetFromEnd()
+        {
+            if (Empty)
+            {
+                throw new EmptyListExceptions("List is emplty!");
+            }
+
+            object result2 = _last.Info;
             // 1) видалення останнього емементу зі списку
             if (_last.Prev == null)
             {
-                
                 _last = null;
                 _first = null;
             }
@@ -128,20 +166,84 @@ namespace _DoubleList
             }
         }
 
-
-        private class Item
+        public void Sort()
         {
-            public Item(int info, Item next = null)
+            bool swapped;
+            Item current;
+
+            do
             {
-                Info = info;
-                Next = next;
-                Prev = null;
+                swapped = false;
+                current = _first;
+
+                while (current != null && current.Next != null)
+                {
+                    Item next = current.Next;
+
+                    //ICompare or ICompareable
+                    int objectCompareIndex = Compare(current.Info, next.Info);
+
+                    if (objectCompareIndex == -1)
+                    {
+                        Swap(current, next);
+                        swapped = true;
+                    }
+
+                    current = current.Next;
+                }
+            } while (swapped);
+        }
+
+        private void Swap(Item first, Item second)
+        {
+            if (first.Prev != null)
+            {
+                first.Prev.Next = second;
+            }
+            else
+            {
+                _first = second;
             }
 
-            public int Info { get; set; }    // інформаційна частина
+            if (second.Next != null)
+            {
+                second.Next.Prev = first;
+            }
 
-            public Item Next { get; set; }    // посилання на наступний елемент списку
-            public Item Prev { get; set; }    // посилання на попередній елемент списку
+            Item tempPrev = first.Prev;
+            Item tempNext = second.Next;
+
+            first.Next = tempNext;
+            first.Prev = second;
+
+            second.Prev = tempPrev;
+            second.Next = first;
+        }
+
+        public int Compare(object? x, object? y)
+        {
+            Item first = x as Item;
+            Item second = y as Item;
+
+            string strFirst = (string)first.Info;
+            string strSecond = (string)second.Info;
+
+            if (int.TryParse(strFirst, out int valueFirst) && int.TryParse(strSecond, out int valueSecond))
+            {
+                if (valueFirst < valueSecond)
+                {
+                    return 1;
+                }
+
+                if (valueFirst > valueSecond)
+                {
+                    return -1;
+                }
+
+                return 0;
+            }
+
+            return strFirst.CompareTo(strSecond);
         }
     }
 }
