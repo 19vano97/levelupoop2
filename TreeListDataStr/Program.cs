@@ -11,7 +11,7 @@ namespace _TreeListDataStr
     {
         static void Main(string[] args)
         {
-            TreeList t1 = new TreeList();
+            TreeList<int, string> t1 = new TreeList<int, string>();
 
             t1.Add(20, "Mikola");
             t1.Add(-3, "Alex");
@@ -42,36 +42,22 @@ namespace _TreeListDataStr
 
             System.Console.WriteLine("foreach");
 
-            int i = 0;
 
-            foreach (object item in t1)
+            foreach (KeyValuePair<int, string> item in t1)
             {
                 System.Console.WriteLine(item);
                 // i++;
                 // System.Console.WriteLine(i);
             }
 
-            foreach (var item in t1.Values)
+            foreach (var item in t1.Keys)
             {
                 System.Console.WriteLine(item);
             }
 
-
-            // #region Search by key
-
-            // int k = -1000;
-
-            // if (t1.TryGetValue(k, out object info))
-            // {
-            //     Console.WriteLine($"[{k}] = {info}");
-            // }
-            // else
-            // {
-            //     Console.WriteLine("Value with {0} key not found!", k);
-            // }
-
-
-            // #endregion
+            System.Console.WriteLine(t1[-85]);
+            t1[-85] = "4Data3534";
+            System.Console.WriteLine(t1[-85]);
         }
     }
 }

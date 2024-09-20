@@ -3,17 +3,34 @@ using System.Collections;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TimeStamp;
 
 namespace _HashTableDataStr
 {
     // 0.68!!!   :    2 / 3
-    public class StringHashTable // HW! : IDictionary
+    public class StringHashTable : IDictionary
     {
         public const int DEFAUL_CAPACITY = 100;
 
         // string --> int
         private string[] _keys;
         private int[] _values;
+
+        public bool IsFixedSize => false;
+
+        public bool IsReadOnly => false;
+
+        public ICollection Keys => throw new NotImplementedException();
+
+        public ICollection Values => throw new NotImplementedException();
+
+        public int Count => throw new NotImplementedException();
+
+        public bool IsSynchronized => throw new NotImplementedException();
+
+        public object SyncRoot => throw new NotImplementedException();
+
+        public object? this[object key] { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public StringHashTable(int capacity = DEFAUL_CAPACITY)
         {
@@ -27,6 +44,8 @@ namespace _HashTableDataStr
             {
                 // throw 
             }
+
+            GetTimestamp time = new GetTimestamp();
 
             return ((ushort)(key[0]) + (ushort)(key[1]) + (ushort)(key[2])) % _keys.Length; 
         }
@@ -71,6 +90,41 @@ namespace _HashTableDataStr
             }
 
             return result;
+        }
+
+        public void Add(object key, object? value)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Clear()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Contains(object key)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IDictionaryEnumerator GetEnumerator()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Remove(object key)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void CopyTo(Array array, int index)
+        {
+            throw new NotImplementedException();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            throw new NotImplementedException();
         }
     }
 }

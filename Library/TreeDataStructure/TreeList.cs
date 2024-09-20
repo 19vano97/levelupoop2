@@ -1,21 +1,24 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics.CodeAnalysis;
+using System.Reflection.Metadata;
 using System.Text;
 
 namespace TreeDataStructure;
 
-public class TreeList : IDictionary
+public class TreeList<TKey, TValue> : IDictionary<TKey, TValue>
 {
     private class Node
     {
-        public object key;
-        public object data;
+        public TKey key;
+        public TValue data;
         public Node left;
         public Node right;
         public Node parent;
         public bool isActive;
 
-        public Node(object Key, object Data, Node Left = null, Node Right = null, Node Parent = null)
+        public Node(TKey Key, TValue Data, Node Left = null, Node Right = null, Node Parent = null)
         {
             key = Key;
             data = Data;
@@ -31,12 +34,384 @@ public class TreeList : IDictionary
 
     private Node _root = null;
 
-    public void Add(object key, object data)
+    public ICollection<TKey> Keys => new TreeListKeysICollection(this);
+
+    private struct TreeListKeysICollection : ICollection<TKey>
     {
-        Add(ref _root, key, data);
+        private TreeList<TKey, TValue> _source;
+        private Node _current;
+        private bool _isFirstIter;
+
+        public TreeListKeysICollection(TreeList<TKey, TValue> source)
+        {
+            _source = source;
+            _current = _source._root;
+            _isFirstIter = true;
+        }
+
+        public int Count => _source.Count;
+
+        public bool IsSynchronized => false;
+
+        public object SyncRoot => throw new NotImplementedException();
+
+        public bool IsReadOnly => false;
+
+        public void Add(TKey item)
+        {
+            _source.Add(ref _source._root, item);
+        }
+
+        public void Clear()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Contains(TKey item)
+        {
+            return _source.ContainsKey(item);
+        }
+
+        public void CopyTo(Array array, int index)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void CopyTo(TKey[] array, int arrayIndex)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerator GetEnumerator()
+        {
+            return new TreeListEnumerator(_source, TreeListEnumerator.Keys);
+        }
+
+        public bool MoveNext()
+        {
+            if (_source.MoveNextEnum(ref _current, _source._root, ref _isFirstIter))
+                {
+                    _isFirstIter = false;
+                    return true;
+                }
+
+            return false;
+        }
+        
+        public bool Remove(TKey item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Reset()
+        {
+            _current = _source._root;
+        }
+
+        IEnumerator<TKey> IEnumerable<TKey>.GetEnumerator()
+        {
+            return new TreeListKeyICollectionEnumGen(_source);
+        }
+
+        private struct TreeListKeyICollectionEnumGen : IEnumerator<TKey>
+        {
+            private TreeList<TKey, TValue> _source;
+            private Node _current;
+            private bool _isFirstIter;
+
+            public TreeListKeyICollectionEnumGen(TreeList<TKey, TValue> source)
+            {
+                _source = source;
+                _current = _source._root;
+                _isFirstIter = true;
+            }
+
+            public TKey Current => _current.key;
+
+            object IEnumerator.Current => new TreeListEnumerator(_source, TreeListEnumerator.Keys);
+
+            public void Dispose()
+            {
+                GC.SuppressFinalize(this);
+            }
+
+            public bool MoveNext()
+            {
+                if (_source.MoveNextEnum(ref _current, _source._root, ref _isFirstIter))
+                {
+                    _isFirstIter = false;
+                    return true;
+                }
+
+                return false;
+            }
+
+            public void Reset()
+            {
+                _current = _source._root;
+            }
+        }
     }
 
-    private void Add(ref Node root, object key, object data, Node parent = null)
+    public ICollection<TValue> Values => new TreeListValueICollection(this);
+
+    private struct TreeListValueICollection : ICollection<TValue>
+    {
+        private TreeList<TKey, TValue> _source;
+        private Node _current;
+        private bool _isFirstIter;
+
+        public TreeListValueICollection(TreeList<TKey, TValue> source)
+        {
+            _source = source;
+            _current = _source._root;
+            _isFirstIter = true;
+        }
+
+        public int Count => _source.Count;
+
+        public bool IsSynchronized => false;
+
+        public object SyncRoot => throw new NotImplementedException();
+
+        public bool IsReadOnly => throw new NotImplementedException();
+
+        public void Add(TValue item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Clear()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Contains(TValue item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void CopyTo(Array array, int index)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void CopyTo(TValue[] array, int arrayIndex)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerator GetEnumerator()
+        {
+            return new TreeListEnumerator(_source, TreeListEnumerator.Values);
+        }
+
+        public bool MoveNext()
+        {
+            if (_source.MoveNextEnum(ref _current, _source._root, ref _isFirstIter))
+                {
+                    _isFirstIter = false;
+                    return true;
+                }
+
+            return false;
+        }
+
+        public bool Remove(TValue item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Reset()
+            {
+                _current = _source._root;
+            }
+
+        IEnumerator<TValue> IEnumerable<TValue>.GetEnumerator()
+        {
+            return new TreeListValueICollectionEnumGen(_source);
+        }
+
+        private struct TreeListValueICollectionEnumGen : IEnumerator<TValue>
+        {
+            private TreeList<TKey, TValue> _source;
+            private Node _current;
+            private bool _isFirstIter;
+
+            public TreeListValueICollectionEnumGen(TreeList<TKey, TValue> source)
+            {
+                _source = source;
+                _current = _source._root;
+                _isFirstIter = true;
+            }
+
+            public TValue Current => _current.data;
+
+            object IEnumerator.Current => new TreeListEnumerator(_source, TreeListEnumerator.Values);
+
+            public void Dispose()
+            {
+                GC.SuppressFinalize(this);
+            }
+
+            public bool MoveNext()
+            {
+                if (_source.MoveNextEnum(ref _current, _source._root, ref _isFirstIter))
+                {
+                    _isFirstIter = false;
+                    return true;
+                }
+
+                return false;
+            }
+
+            public void Reset()
+            {
+                _current = _source._root;
+            }
+        }
+    }
+
+    private struct TreeListValueICollectionEnumGen : IEnumerator<TValue>
+    {
+        private TreeList<TKey, TValue> _source;
+        private Node _current;
+        private bool _isFirstIter;
+
+        public TreeListValueICollectionEnumGen(TreeList<TKey, TValue> source)
+        {
+            _source = source;
+            _current = _source._root;
+            _isFirstIter = true;
+        }
+
+        public TValue Current => _current.data;
+
+        object IEnumerator.Current => new TreeListEnumerator(_source, TreeListEnumerator.Values);
+
+        public void Dispose()
+        {
+            GC.SuppressFinalize(this);
+        }
+
+        public bool MoveNext()
+        {
+            if (_source.MoveNextEnum(ref _current, _source._root, ref _isFirstIter))
+            {
+                _isFirstIter = false;
+                return true;
+            }
+            return false;
+        }
+
+        public void Reset()
+        {
+            _current = _source._root;
+        }
+    }
+
+    public int Count
+    {
+        get
+            {
+                int index = 0;
+
+                bool isRunning = true;
+                bool _isFirstIter = true;
+
+                Node current = _root;
+
+                do
+                {
+                    if (current == null)
+                    {
+                        isRunning = false;
+                    }
+                    else if (current == _root && _isFirstIter)
+                    {
+                        index++;
+                        _isFirstIter = false;
+                    }
+                    else if (current.left != null && current.left.isActive)
+                    {
+                        current = current.left;
+                        index++;
+                    }
+                    else if (current.right != null && current.right.isActive)
+                    {
+                        current = current.right;
+                        index++;
+                    }
+                    else
+                    {
+                        Node last = null;
+                        do
+                        {
+                            if (current?.parent == null && last !=_root.right)
+                            {
+                                break;
+                            }
+                            else if (current?.parent == null && last ==_root.right)
+                            {
+                                isRunning = false;
+                                break;
+                            }
+                            else if (last != null && !(last?.isActive ?? false))
+                            {
+                                isRunning = false;
+                                break;
+                            }
+    
+                            last = current;
+                            current = current.parent;
+                        } while (current?.right == null || current.right == last);
+    
+                        if (isRunning && current.right.isActive)
+                        {
+                            current = current.right;
+                            index++;
+                        }
+                        else
+                        {
+                            isRunning = false;
+                        }
+                        
+                    }
+                } while (isRunning);
+
+                return index;
+            }
+    }
+
+    public bool IsReadOnly => false;
+
+    public TValue this[TKey key] 
+    { 
+        get
+        {
+            Node res = GetNodeByKey(_root, key);
+
+            if (res != null)
+            {
+                return res.data;
+            }
+
+            return default;
+        }
+        set
+        {
+            Node res = GetNodeByKey(_root, key);
+
+            if (res != null)
+            {
+                res.data = value;
+            }
+
+            return;
+        }
+    } 
+
+    private void Add(ref Node root, TKey key, TValue data, Node parent = null)
     {
         if (root == null || !root.isActive)
         { 
@@ -57,23 +432,28 @@ public class TreeList : IDictionary
         }
     }
 
-    public bool TryGetValue(object key, out object data)
+    private void Add(ref Node root, TKey key, Node parent = null)
     {
-        Node res = GetNodeByKey(_root, key);
+        if (root == null || !root.isActive)
+        { 
+            Node newNode = new Node(key, default);
+            newNode.parent = parent;
+            root = newNode;
 
-        if (res == null || !res.isActive)
-        {
-            data = null;
-
-            return false;
+            return;
         }
 
-        data = res.data;
-
-        return true;
+        if (Compare(key, root.key) > 0 && root.isActive)
+        {
+            Add(ref root.left, key, root);
+        }
+        else
+        {
+            Add(ref root.right, key, root);
+        }
     }
 
-    private Node GetNodeByKey(Node root, object key)
+    private Node GetNodeByKey(Node root, TKey key)
     {
         if (root == null || !root.isActive)
         {
@@ -95,7 +475,7 @@ public class TreeList : IDictionary
         }
     }
 
-    private Node SetDataByKey(object key, object newData)
+    private Node SetDataByKey(TKey key, TValue newData)
     {
         if (_root == null || !_root.isActive)
         {
@@ -163,391 +543,294 @@ public class TreeList : IDictionary
         return strFirst.CompareTo(strSecond);
     }
 
-    #region IDictionary
-
-        public bool IsFixedSize => false;
-    
-        public bool IsReadOnly => false;
-    
-        public ICollection Keys
+    private bool MoveNextEnum(ref Node _current, Node root, ref bool isFirstIter)
+    {
+        if (_current == root && isFirstIter)
         {
-            get
-            {
-                return new TreeListKeysICollection(this);
-            }
+            // _current = _current?.left ?? _current?.right ?? null;
+            return true;
         }
 
-        private struct TreeListKeysICollection : ICollection
+        if (_current == null)
         {
-            private TreeList _source;
-            private Node _current;
-
-            public TreeListKeysICollection(TreeList source)
-            {
-                _source = source;
-                _current = _source._root;
-            }
-
-            public int Count => _source.Count;
-
-            public bool IsSynchronized => false;
-
-            public object SyncRoot => throw new NotImplementedException();
-
-            public void CopyTo(Array array, int index)
-            {
-                throw new NotImplementedException();
-            }
-
-            public IEnumerator GetEnumerator()
-            {
-                yield return new TreeListKeysICollection(_source);
-            }
-
-            public object Current => _current.key;
-
-            public bool MoveNext()
-            {
-                if (_current == null)
-                {
-                    return false;
-                }
-                else if (_current.left != null && _current.left.isActive)
-                {
-                    _current = _current.left;
-                }
-                else if (_current.right != null && _current.right.isActive)
-                {
-                    _current = _current.right;
-                }
-                else
-                {
-                    Node last;
-                    do
-                    {
-                        if (_current.parent == null)
-                        {
-                            return false;
-                        }
-                        last = _current;
-                        _current = _current.parent;
-                    } while (_current.right == null || _current.right == last);
-                    _current = _current.right;
-                }
-
-                return true;
-            }
-
-            public void Reset()
-            {
-                _current = _source._root;
-            }
-        }
-    
-        public ICollection Values => new TreeListValueICollection(this);
-
-        private struct TreeListValueICollection : ICollection
-        {
-            private TreeList _source;
-            private Node _current;
-
-            public TreeListValueICollection(TreeList source)
-            {
-                _source = source;
-                _current = _source._root;
-            }
-
-            public int Count => _source.Count;
-
-            public object Current => _current.data;
-
-            public bool IsSynchronized => false;
-
-            public object SyncRoot => throw new NotImplementedException();
-
-            public void CopyTo(Array array, int index)
-            {
-                throw new NotImplementedException();
-            }
-
-            public IEnumerator GetEnumerator()
-            {
-                return new TreeListEnumerator(this);
-            }
-
-            public bool MoveNext()
-            {
-                if (_current == null)
-                {
-                    return false;
-                }
-                else if (_current.left != null && _current.left.isActive)
-                {
-                    _current = _current.left;
-                }
-                else if (_current.right != null && _current.right.isActive)
-                {
-                    _current = _current.right;
-                }
-                else
-                {
-                    Node last;
-                    do
-                    {
-                        if (_current.parent == null)
-                        {
-                            return false;
-                        }
-                        last = _current;
-                        _current = _current.parent;
-                    } while (_current.right == null || _current.right == last);
-                    _current = _current.right;
-                }
-
-                return true;
-            }
-
-            public void Reset()
-            {
-                _current = _source._root;
-            }
-        }
-    
-        public int Count
-        {
-            get
-            {
-                int index = 0;
-
-                bool isRunning = true;
-
-                Node current = _root;
-
-                do
-                {
-                    if (current == null)
-                    {
-                        isRunning = false;
-                    }
-                    else if (current.left != null && current.left.isActive)
-                    {
-                        current = current.left;
-                        index++;
-                    }
-                    else if (current.right != null && current.right.isActive)
-                    {
-                        current = current.right;
-                        index++;
-                    }
-                    else
-                    {
-                        Node last = null;
-                        do
-                        {
-                            if (current?.parent == null && last !=_root.right)
-                            {
-                                break;
-                            }
-                            else if (current?.parent == null && last ==_root.right)
-                            {
-                                isRunning = false;
-                                break;
-                            }
-                            else if (last != null && !(last?.isActive ?? false))
-                            {
-                                isRunning = false;
-                                break;
-                            }
-    
-                            last = current;
-                            current = current.parent;
-                        } while (current?.right == null || current.right == last);
-    
-                        if (isRunning && current.right.isActive)
-                        {
-                            current = current.right;
-                            index++;
-                        }
-                        else
-                        {
-                            isRunning = false;
-                        }
-                        
-                    }
-                } while (isRunning);
-
-                return index;
-            }
-        }
-
-        public bool IsSynchronized => false;
-    
-        public object SyncRoot => throw new NotImplementedException();
-    
-        public object? this[object key] 
-        { 
-            get
-            {
-                if (TryGetValue(key, out object data))
-                {
-                    return  data;
-                }
-
-                return null;
-            } 
-            set
-            {
-                SetDataByKey(key, value);
-            }
-        }
-    
-        public void Clear()
-        {
-            throw new NotImplementedException();
-        }
-    
-        public bool Contains(object key)
-        {
-            if (TryGetValue(key, out object data))
-            {
-                return true;
-            }
-
             return false;
         }
-    
-        public IDictionaryEnumerator GetEnumerator()
+        else if (_current.left != null && _current.left.isActive)
         {
-            return new TreeListEnumerator(this);
+            _current = _current.left;
         }
-    
-        public void Remove(object key) 
+        else if (_current.right != null && _current.right.isActive)
         {
-            Node current = GetNodeByKey(_root, key);
-            current.isActive = false;
-            Node init = current;
-
-            bool isRunning = true;
-
+            _current = _current.right;
+        }
+        else
+        {
+            Node last;
             do
             {
-                if (current == null)
+                if (_current.parent == null)
                 {
-                    isRunning = false;
+                    return false;
                 }
-                else if (current.left != null)
+                last = _current;
+                _current = _current.parent;
+            } while (_current.right == null || _current.right == last);
+            _current = _current.right;
+        }
+
+        return true;
+    }
+    
+
+    public void Add(TKey key, TValue value)
+    {
+        Add(ref _root, key, value);
+    }
+
+    public bool ContainsKey(TKey key)
+    {
+        Node res = GetNodeByKey(_root, key);
+
+        if (res == null || !res.isActive)
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+    public bool Remove(TKey key)
+    {
+        Node current = GetNodeByKey(_root, key);
+        current.isActive = false;
+        Node init = current;
+        bool isRunning = true;
+        bool res = false;
+
+        do
+        {
+            if (current == null)
+            {
+                res = false;
+                isRunning = false;
+            }
+            else if (current.left != null)
+            {
+                current = current.left;
+                current.isActive = false;
+                res = true;
+            }
+            else if (current.right != null)
+            {
+                current = current.right;
+                current.isActive = false;
+                res = true;
+            }
+            else
+            {
+                Node last = null;
+                do
                 {
-                    current = current.left;
-                    current.isActive = false;
-                }
-                else if (current.right != null)
+                    if (current == init && last !=init.right && current.isActive == false)
+                    {
+                        break;
+                    }
+                    else if (current == init && last ==init.right && current.isActive == false)
+                    {
+                        isRunning = false;
+                        break;
+                    }
+
+                    last = current;
+                    current = current.parent;
+                } while (current?.right == null || current.right == last);
+
+                if (isRunning)
                 {
                     current = current.right;
                     current.isActive = false;
+                    res = true;
                 }
-                else
-                {
-                    Node last = null;
-                    do
-                    {
-                        if (current == init && last !=init.right && current.isActive == false)
-                        {
-                            break;
-                        }
-                        else if (current == init && last ==init.right && current.isActive == false)
-                        {
-                            isRunning = false;
-                            break;
-                        }
-    
-                        last = current;
-                        current = current.parent;
-                    } while (current?.right == null || current.right == last);
-    
-                    if (isRunning)
-                    {
-                        current = current.right;
-                        current.isActive = false;
-                    }
-                    
-                }
-            } while (isRunning);
+                
+            }
+        } while (isRunning);
 
-        }
-    
-        public void CopyTo(Array array, int index)
+        return res;
+    }
+
+    public bool TryGetValue(TKey key, [MaybeNullWhen(false)] out TValue value)
+    {
+        Node res = GetNodeByKey(_root, key);
+
+        if (res == null || !res.isActive)
         {
-            throw new NotImplementedException();
+            value = default;
+
+            return false;
         }
-    
-        IEnumerator IEnumerable.GetEnumerator()
+
+        value = res.data;
+
+        return true;
+    }
+
+    public void Add(KeyValuePair<TKey, TValue> item)
+    {
+        Add(ref _root, item.Key, item.Value);
+    }
+
+    public void Clear()
+    {
+        throw new NotImplementedException();
+    }
+
+    public bool Contains(KeyValuePair<TKey, TValue> item)
+    {
+        Node root = _root;
+        Node res = GetNodeByKey(root, item.Key);
+
+        if (res != null)
         {
-            return new TreeListEnumerator(this);
+            return true;
         }
 
-        #region TreeListEnumerator
+        return false;
+    }
 
-            private struct TreeListEnumerator : IEnumerator, IDictionaryEnumerator
+    public void CopyTo(KeyValuePair<TKey, TValue>[] array, int arrayIndex)
+    {
+        throw new NotImplementedException();
+    }
+
+    public bool Remove(KeyValuePair<TKey, TValue> item)
+    {
+        return Remove(item.Key);
+    }
+
+    public IEnumerator<KeyValuePair<TKey, TValue>> GetEnumerator()
+    {
+        return new TreeListEnumeratorGeneric(this);
+    }
+
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        return new TreeListEnumerator(this, TreeListEnumerator.DictEntry);
+    }
+
+    #region TreeListEnumerator
+
+        private struct TreeListEnumerator : IEnumerator, IDictionaryEnumerator
+        {
+            private TreeList<TKey, TValue> _source;
+            private Node _current;
+            private int _collectionId;
+            private bool _isFirstIter;
+
+            internal const int Keys = 0;
+            internal const int Values = 1;
+            internal const int DictEntry = 2;
+
+            public TreeListEnumerator(TreeList<TKey, TValue> source, int collectionId)
             {
-                private TreeList _source;
-                private Node _current;
+                _source = source;
+                _current = _source._root;
+                _collectionId = collectionId;
+                _isFirstIter = true;
+            }
 
-
-                public TreeListEnumerator(TreeList source)
+            public object Current
+            {
+                get
                 {
-                    _source = source;
-                    _current = _source._root;
-                }
-
-                public object Current => _current.data;
-
-                public DictionaryEntry Entry => throw new NotImplementedException();
-        
-                public object Key => _current.key;
-        
-                public object? Value => _current.data;
-        
-                public bool MoveNext()
-                {         
-                    if (_current == null)
+                    if (_collectionId == 0)
                     {
-                        return false;
+                        return _current.key;
                     }
-                    else if (_current.left != null && _current.left.isActive)
+                    if (_collectionId == 1)
                     {
-                        _current = _current.left;
+                        return _current.data;
                     }
-                    else if (_current.right != null && _current.right.isActive)
-                    {
-                        _current = _current.right;
-                    }
-                    else
-                    {
-                        Node last;
-                        do
-                        {
-                            if (_current.parent == null)
-                            {
-                                return false;
-                            }
-        
-                            last = _current;
-                            _current = _current.parent;
-                        } while (_current.right == null || _current.right == last);
-        
-                        _current = _current.right;
-                    }
-        
-                    return true;
-                }
-        
-                public void Reset()
-                {
-                    _current = _source._root;
+                    return new DictionaryEntry(_current.key, _current.data);
                 }
             }
 
-        #endregion  
+            public DictionaryEntry Entry
+            {
+                get
+                {
+                    if (_current == null)
+                    {
+                        throw new InvalidOperationException();
+                    }
+                    return new DictionaryEntry(_current.key, _current.data);
+                }
+            }
+    
+            public object Key => _current.key;
+    
+            public object? Value => _current.data;
+    
+            public bool MoveNext()
+            {         
+                if (_source.MoveNextEnum(ref _current, _source._root, ref _isFirstIter))
+                {
+                    _isFirstIter = false;
+                    return true;
+                }
 
-    #endregion
+                return false;
+            }
+    
+            public void Reset()
+            {
+                _current = _source._root;
+            }
+        }
+
+
+    private struct TreeListEnumeratorGeneric : IEnumerator<KeyValuePair<TKey, TValue>>
+    {
+        private TreeList<TKey, TValue> _source;
+        private Node _current;
+        private KeyValuePair<TKey, TValue> _currentKeyV;
+        private bool _isFirstIter;
+
+        public TreeListEnumeratorGeneric(TreeList<TKey, TValue> source)
+        {
+            _source = source;
+            _current = _source._root;
+            _currentKeyV = new KeyValuePair<TKey, TValue>(_current.key, _current.data);
+            _isFirstIter = true;
+        }
+
+        public KeyValuePair<TKey, TValue> Current => _currentKeyV;
+
+        object IEnumerator.Current => new TreeListEnumerator(_source, TreeListEnumerator.DictEntry);
+
+        public void Dispose()
+        {
+            GC.SuppressFinalize(this);
+        }
+
+        public bool MoveNext()
+        {
+            if (_source.MoveNextEnum(ref _current, _source._root, ref _isFirstIter))
+                {
+                    _isFirstIter = false;
+                    _currentKeyV = new KeyValuePair<TKey, TValue>(_current.key, _current.data);
+                    return true;
+                }
+            
+            _currentKeyV = new KeyValuePair<TKey, TValue>(_current.key, _current.data);
+
+            return false;
+        }
+
+        public void Reset()
+        {
+            _current = _source._root;
+            _currentKeyV = new KeyValuePair<TKey, TValue>(_current.key, _current.data);
+        }
+    }
+    #endregion  
 }

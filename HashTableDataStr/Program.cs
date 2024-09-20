@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TimeStamp;
 
 namespace _HashTableDataStr
 {
@@ -17,10 +18,11 @@ namespace _HashTableDataStr
             ht.Add("abc", 333);
             ht.Add("klm", 222);
             ht.Add("bca", 765);
+            ht.Add("bca", 768);
 
             {
                 int res;
-                string key1 = "ttt";
+                string key1 = "bca";
                 if (ht.TryGetValue(key1, out res))
                 {
                     Console.WriteLine($"ht[{key1}] = {res}");
@@ -44,6 +46,7 @@ namespace _HashTableDataStr
                 }
             }
 
+        
             Console.ReadKey();
         }
     }

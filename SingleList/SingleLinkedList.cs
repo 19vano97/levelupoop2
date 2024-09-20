@@ -8,7 +8,7 @@ using _ListException;
 
 namespace _SingleList
 {
-    public class SingleLinkedList : IEnumerable
+    public class SingleLinkedList: IEnumerable
     {
         private class Item
         {
