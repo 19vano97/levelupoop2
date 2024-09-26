@@ -39,5 +39,5 @@ update dbo.Students
 set GroupId = 1
 where RecordBookNumberId in (1, 2, 3)
 
-select * from development.dbo.Students s
+select s.RecordBookNumberId, s.FirstName, s.LastName, g.Name from development.dbo.Students s
 join development.dbo.Groups g on s.GroupId = g.Id
