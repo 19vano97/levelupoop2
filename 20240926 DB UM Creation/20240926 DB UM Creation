@@ -1,5 +1,21 @@
 -- Create a new database called 'UserManagement'
 -- Connect to the 'master' database to run this snippet
+
+-- Drop the database 'UserManagement'
+-- Connect to the 'master' database to run this snippet
+USE master
+GO
+-- Uncomment the ALTER DATABASE statement below to set the database to SINGLE_USER mode if the drop database command fails because the database is in use.
+-- ALTER DATABASE UserManagement SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+-- Drop the database if it exists
+IF EXISTS (
+  SELECT name
+   FROM sys.databases
+   WHERE name = N'UserManagement'
+)
+DROP DATABASE UserManagement
+GO
+
 USE master
 GO
 -- Create the new database if it does not exist already
@@ -21,7 +37,7 @@ GO
 -- Create the table in the specified schema
 CREATE TABLE dbo.Account
 (
-    Id [nvarchar] (50) NOT NULL PRIMARY KEY, -- primary key column
+    Id UNIQUEIDENTIFIER DEFAULT NEWID() PRIMARY KEY, -- primary key column
     Email [NVARCHAR] (50) NOT NULL,
     FirstName [NVARCHAR](50) NOT NULL,
     LastName [NVARCHAR](50) NOT NULL,
@@ -32,22 +48,7 @@ CREATE TABLE dbo.Account
 );
 GO
 
--- Drop the table 'Account' in schema 'dbo'
-IF EXISTS (
-    SELECT *
-        FROM sys.tables
-        JOIN sys.schemas
-            ON sys.tables.schema_id = sys.schemas.schema_id
-    WHERE sys.schemas.name = N'dbo'
-        AND sys.tables.name = N'Account'
-)
-    DROP TABLE dbo.Account
-GO
 
--- Delete rows from table  dbo.Account'
-DELETE FROM dbo.Account
-WHERE Id = '31539da4-698e-467e-90cf-29615aa3086d'
-GO
 
 -- Create a new table called 'WebForm' in schema 'dbo'
 -- Drop the table if it already exists
@@ -57,7 +58,7 @@ GO
 -- Create the table in the specified schema
 CREATE TABLE dbo.WebForm
 (
-    Id INT NOT NULL PRIMARY KEY, -- primary key column
+    Id INT IDENTITY(1,1) PRIMARY KEY, -- primary key column
     Name [NVARCHAR](50) NOT NULL,
     CreateDate [datetime] default(getdate()) NOT NULL,
     ModifyDate [datetime] default(getdate()) NOT NULL
@@ -74,7 +75,7 @@ GO
 -- Create the table in the specified schema
 CREATE TABLE dbo.Country
 (
-    Id INT NOT NULL PRIMARY KEY, -- primary key column
+    Id INT IDENTITY(1,1) PRIMARY KEY, -- primary key column
     Name [NVARCHAR](50) NOT NULL,
     CreateDate [datetime] default(getdate()) NOT NULL,
     ModifyDate [datetime] default(getdate()) NOT NULL
@@ -89,8 +90,8 @@ GO
 -- Create the table in the specified schema
 CREATE TABLE dbo.AccountDetails
 (
-    Id INT NOT NULL PRIMARY KEY, -- primary key column
-    AccountId [NVARCHAR] (50) not null,
+    Id INT IDENTITY(1,1) PRIMARY KEY, -- primary key column
+    AccountId [UNIQUEIDENTIFIER] not null,
     CountryId [int],
     WebFormId [int],
     CreateDate [datetime] default(getdate()) NOT NULL,
@@ -109,7 +110,7 @@ GO
 -- Create the table in the specified schema
 CREATE TABLE dbo.Role
 (
-    Id INT NOT NULL PRIMARY KEY, -- primary key column
+    Id INT IDENTITY(1,1) PRIMARY KEY, -- primary key column
     Name [NVARCHAR](50) NOT NULL,
     CreateDate [datetime] default(getdate()) NOT NULL,
     ModifyDate [datetime] default(getdate()) NOT NULL
@@ -122,7 +123,7 @@ GO
 -- Create the table in the specified schema
 CREATE TABLE dbo.Device
 (
-    Id INT NOT NULL PRIMARY KEY, -- primary key column
+    Id INT IDENTITY(1,1) PRIMARY KEY, -- primary key column
     Name [NVARCHAR](50) NOT NULL,
     CreateDate [datetime] default(getdate()) NOT NULL,
     ModifyDate [datetime] default(getdate()) NOT NULL
@@ -135,7 +136,7 @@ GO
 -- Create the table in the specified schema
 CREATE TABLE dbo.Client
 (
-    Id INT NOT NULL PRIMARY KEY, -- primary key column
+    Id INT IDENTITY(1,1) PRIMARY KEY, -- primary key column
     Name [NVARCHAR](50) NOT NULL,
     CreateDate [datetime] default(getdate()) NOT NULL,
     ModifyDate [datetime] default(getdate()) NOT NULL
@@ -148,8 +149,8 @@ GO
 -- Create the table in the specified schema
 CREATE TABLE dbo.AccountRoles
 (
-    Id INT NOT NULL PRIMARY KEY, -- primary key column
-    AccountId [NVARCHAR] (50) not null,
+    Id INT IDENTITY(1,1) PRIMARY KEY, -- primary key column
+    AccountId [UNIQUEIDENTIFIER] not null,
     RoleId [int],
     CreateDate [datetime] default(getdate()) NOT NULL,
     ModifyDate [datetime] default(getdate()) NOT NULL,
@@ -166,8 +167,8 @@ GO
 -- Create the table in the specified schema
 CREATE TABLE dbo.Session
 (
-    Id [NVARCHAR] (50) NOT NULL PRIMARY KEY, -- primary key column
-    AccountId [NVARCHAR] (50) not null,
+    Id INT IDENTITY(1,1) PRIMARY KEY, -- primary key column
+    AccountId [UNIQUEIDENTIFIER] not null,
     DeviceId int,
     ClientId int,
     CreateDate [datetime] default(getdate()) NOT NULL,
@@ -212,14 +213,14 @@ GO
 -- Insert rows into table 'Country'
 INSERT INTO Country
 ( -- columns to insert data into
- [Id], [Name]
+ [Name]
 )
 VALUES
 ( -- first row: values for the columns in the list above
- 1, 'Argentina'
+ 'USA'
 ),
 ( -- second row: values for the columns in the list above
- 2, 'Peru'
+'Peru'
 )
 -- add more rows here
 GO
@@ -227,11 +228,11 @@ GO
 -- Insert rows into table 'WebForm'
 INSERT INTO WebForm
 ( -- columns to insert data into
- [Id], [Name]
+[Name]
 )
 VALUES
 ( -- first row: values for the columns in the list above
- 1, 'localhost'
+'localhost11'
 )
 -- add more rows here
 GO
@@ -255,3 +256,9 @@ SET
     -- add more columns and values here
 WHERE 	Id = 'ce01821f-2929-429e-a42e-cdf9eef75a0d'
 GO
+
+use UserManagement
+
+select * from dbo.WebForm
+
+select * from dbo.Account

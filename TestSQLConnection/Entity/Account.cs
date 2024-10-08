@@ -7,41 +7,47 @@ namespace TestSQLConnection.Entity;
 [Table ("Account")]
 public class Account
 {
-    public string? Id {get; set;}
-    public string? Email {get; set;}
-    public string FirstName {get; set;}
-    public string LastName {get; set;}
-    public string PasswordHash {get; set;}
-    public int EmailConfirm {get; set;}
-    public DateTime CreateDate {get; set;}
-    public DateTime ModifyDate {get; set;}
+    public virtual Guid? Id {get; set;}
+    public virtual string? Email {get; set;}
+    public virtual string FirstName {get; set;}
+    public virtual string LastName {get; set;}
+    public virtual string PasswordHash {get; set;}
+    public virtual int EmailConfirm {get; set;}
+    public virtual AccountDetails accountDetails {get; set;}
+    public virtual DateTime CreateDate {get; set;}
+    public virtual DateTime ModifyDate {get; set;}
 }
 
 [Table ("AccountDetails")]
 public class AccountDetails
 {
-    public int? Id {get; set;}
-    public string? AccountId {get; set;}
-    public int CountryId {get; set;}
-    public int WebFormId {get; set;}
-    public DateTime CreateDate {get; set;}
-    public DateTime ModifyDate {get; set;}
+    public virtual int? Id {get; set;}
+    public virtual Guid? AccountId {get; set;}
+    public virtual int CountryId {get; set;}
+    public virtual int WebFormId {get; set;}
+    public virtual Account account {get; set;}
+    public virtual Country country {get; set;}
+    public virtual WebForm webForm {get; set;}
+    public virtual DateTime CreateDate {get; set;}
+    public virtual DateTime ModifyDate {get; set;}
 }
 
 [Table ("Country")]
 public class Country
 {
-    public int? Id {get; set;}
-    public string? Name {get; set;}
-    public DateTime CreateDate {get; set;}
-    public DateTime ModifyDate {get; set;}
+    public virtual int? Id {get; set;}
+    public virtual string? Name {get; set;}
+    public virtual AccountDetails accountDetails {get; set;}
+    public virtual DateTime CreateDate {get; set;}
+    public virtual DateTime ModifyDate {get; set;}
 }
 
 [Table ("WebForm")]
 public class WebForm
 {
-    public int? Id {get; set;}
-    public string? Name {get; set;}
-    public DateTime CreateDate {get; set;}
-    public DateTime ModifyDate {get; set;}
+    public virtual int? Id {get; set;}
+    public virtual string? Name {get; set;}
+    public virtual AccountDetails accountDetails {get; set;}
+    public virtual DateTime CreateDate {get; set;}
+    public virtual DateTime ModifyDate {get; set;}
 }
