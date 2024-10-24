@@ -51,3 +51,37 @@ public class WebForm
     public virtual DateTime CreateDate {get; set;}
     public virtual DateTime ModifyDate {get; set;}
 }
+
+[Table ("Session")]
+public class Session
+{
+    public virtual Guid? Id {get; set;}
+    public virtual Guid? AccountId {get; set;}
+    public virtual int ClientId {get; set;}
+    public virtual int DeviceId {get; set;}
+    public virtual Account account {get; set;}
+    public virtual Device Device {get; set;}
+    public virtual Client Client {get; set;}
+    public virtual DateTime CreateDate {get; set;}
+    public virtual DateTime ModifyDate {get; set;}
+}
+
+[Table ("Client")]
+public class Client
+{
+    public virtual int? Id {get; set;}
+    public virtual string? Name {get; set;}
+    public virtual Session Session {get; set;}
+    public virtual DateTime CreateDate {get; set;}
+    public virtual DateTime ModifyDate {get; set;}
+}
+
+[Table ("Device")]
+public class Device
+{
+    public virtual int? Id {get; set;}
+    public virtual string? Name {get; set;}
+    public virtual Session Session {get; set;}
+    public virtual DateTime CreateDate {get; set;}
+    public virtual DateTime ModifyDate {get; set;}
+}

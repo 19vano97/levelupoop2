@@ -167,7 +167,7 @@ GO
 -- Create the table in the specified schema
 CREATE TABLE dbo.Session
 (
-    Id INT IDENTITY(1,1) PRIMARY KEY, -- primary key column
+    Id UNIQUEIDENTIFIER DEFAULT NEWID() PRIMARY KEY, -- primary key column
     AccountId [UNIQUEIDENTIFIER] not null,
     DeviceId int,
     ClientId int,
@@ -180,6 +180,18 @@ CREATE TABLE dbo.Session
     
     -- specify more columns here
 );
+GO
+
+-- Drop the table 'Session' in schema 'dbo'
+IF EXISTS (
+    SELECT *
+        FROM sys.tables
+        JOIN sys.schemas
+            ON sys.tables.schema_id = sys.schemas.schema_id
+    WHERE sys.schemas.name = N'dbo'
+        AND sys.tables.name = N'Session'
+)
+    DROP TABLE dbo.Session
 GO
 
 /**** INSERT ****/
@@ -262,3 +274,43 @@ use UserManagement
 select * from dbo.WebForm
 
 select * from dbo.Account
+
+-- Insert rows into table 'Client'
+INSERT INTO dbo.Client
+( -- columns to insert data into
+ [Name]
+)
+VALUES
+( -- first row: values for the columns in the list above
+ 'DesktopAppForWindows'
+),
+( -- second row: values for the columns in the list above
+ 'DesktopAppForMac'
+)
+-- add more rows here
+GO
+
+-- Delete rows from table 'dbo.Client'
+DELETE FROM dbo.Client
+WHERE Id = 1 or id = 2
+GO
+
+-- Delete rows from table 'dbo.Account'
+DELETE FROM dbo.AccountDetails
+WHERE AccountId IN (SELECT Id FROM dbo.Account WHERE Email = 'test9@yopmail.com');
+
+DELETE FROM dbo.Account
+WHERE Email = 'test9@yopmail.com';
+GO
+
+select distinct ClientId from dbo.Session
+
+select * from dbo.Session where AccountId in (select Id from dbo.account where email like 'test1%')
+
+select a.Email, s.Id as RefreshToken, c.Name as Client, d.Name as Desktop, co.Name as Country from dbo.Session s
+join dbo.Account a on s.AccountId = a.Id
+join dbo.Client c on c.Id = s.ClientId
+join dbo.Device d on d.Id  = s.DeviceId
+join dbo.AccountDetails ad on s.AccountId = ad.AccountId
+join dbo.Country co on co.Id = ad.CountryId
+

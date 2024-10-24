@@ -10,6 +10,10 @@ public class AccountDBContext : DbContext
     public DbSet<AccountDetails> accountDetails {get; set;}
     public DbSet<Country> countries {get; set;}
     public DbSet<WebForm> webForms {get; set;}
+    public DbSet<Session> sessions {get; set;}
+    public DbSet<Client> clients {get; set;}
+    public DbSet<Device> devices {get; set;}
+
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
