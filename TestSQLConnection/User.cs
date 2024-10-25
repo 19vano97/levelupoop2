@@ -235,8 +235,6 @@ public class User
 
             context.Add(newSession);
             context.SaveChanges();
-
-            System.Console.WriteLine("Successfully logged in");
         }
     }
 
