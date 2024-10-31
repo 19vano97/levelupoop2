@@ -35,6 +35,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenericsLesson", "GenericsL
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestSQLConnection", "TestSQLConnection\TestSQLConnection.csproj", "{F1E10254-DD06-4D68-891A-27D35CBB1FDD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "20241027TestWebAPI", "20241027TestWebAPI\20241027TestWebAPI.csproj", "{D2960B6B-F6FC-43D9-960B-5177AC6BE1A2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "20241031_HW_FirstSQLConnection", "20241031_HW_FirstSQLConnection\20241031_HW_FirstSQLConnection.csproj", "{FA768BEC-E539-402E-8805-ED25C7F81EE9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -97,6 +101,14 @@ Global
 		{F1E10254-DD06-4D68-891A-27D35CBB1FDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F1E10254-DD06-4D68-891A-27D35CBB1FDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F1E10254-DD06-4D68-891A-27D35CBB1FDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2960B6B-F6FC-43D9-960B-5177AC6BE1A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2960B6B-F6FC-43D9-960B-5177AC6BE1A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2960B6B-F6FC-43D9-960B-5177AC6BE1A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2960B6B-F6FC-43D9-960B-5177AC6BE1A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA768BEC-E539-402E-8805-ED25C7F81EE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA768BEC-E539-402E-8805-ED25C7F81EE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA768BEC-E539-402E-8805-ED25C7F81EE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA768BEC-E539-402E-8805-ED25C7F81EE9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

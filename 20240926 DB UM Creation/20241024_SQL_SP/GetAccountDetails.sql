@@ -11,11 +11,13 @@ GO
 -- Create the stored procedure in the specified schema
 CREATE PROCEDURE dbo.GetAccountDetails
     @Email NVARCHAR(50),
+    @AccountDetailsId INT,
+    @AccountId UNIQUEIDENTIFIER,
     @FirstName NVARCHAR(50) OUT,
     @LastName NVARCHAR(50) OUT,
     @EmailConfirm INT OUT,
-    @Country NVARCHAR(50) OUT,
-    @WebForm NVARCHAR(50) OUT
+    @Country INT OUT,
+    @WebForm INT OUT
 -- add more stored procedure parameters here
 AS
     SET NOCOUNT ON;
@@ -24,11 +26,13 @@ AS
         RETURN -1;
 
     SELECT 
-          @FirstName = a.FirstName
+          @AccountDetailsId = ad.Id
+        , @AccountId = a.Id
+        , @FirstName = a.FirstName
         , @LastName = a.LastName
         , @EmailConfirm = a.EmailConfirm
-        , @Country = c.Name
-        , @WebForm = w.Name
+        , @Country = c.Id
+        , @WebForm = w.Id
     FROM dbo.Account a
 
     JOIN dbo.AccountDetails ad on a.Id = ad.AccountId

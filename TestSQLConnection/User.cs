@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using TestSQLConnection.DBContext;
 using TestSQLConnection.Entity;
 
@@ -154,30 +155,21 @@ public class User
 
         using (var context = new AccountDBContext())
         {
-            var account = context.accounts.Where(a => a.Email == _email).ToList();
-            var accountDetails = context.accountDetails
-                                    .Where(ad => ad.AccountId == (context.accounts
-                                        .Where(a => a.Email == _email)
-                                        .Select(a => a.Id)
-                                        .FirstOrDefault()))
-                                    .ToList();
-
-            foreach (var item in account)
-            {
-                _id = item.Id;
-                _firstName = item.FirstName;
-                _lastName = item.LastName;
-                _passwordHash = item.PasswordHash;
-                _emailConfirm = item.EmailConfirm;
-                _createDate = item.CreateDate;
-                _modifyDate = item.ModifyDate;
-            }
-
-            foreach (var item in accountDetails)
-            {
-                _country = context.countries.Where(c => c.Id == item.CountryId).Select(c => c.Name).FirstOrDefault();
-                _webform = context.webForms.Where(w => w.Id == item.WebFormId).Select(w => w.Name).FirstOrDefault();
-            }
+            var account = context.accounts
+                            .Include(a => a.accountDetails)
+                            .Include(c => c.accountDetails.country)
+                            .Include(w => w.accountDetails.webForm)
+                            .Where(a => a.Email == _email).First();
+          
+            _id = account.Id;
+            _firstName = account.FirstName;
+            _lastName = account.LastName;
+            _passwordHash = account.PasswordHash;
+            _emailConfirm = account.EmailConfirm;
+            _createDate = account.CreateDate;
+            _modifyDate = account.ModifyDate;
+            _country = account.accountDetails?.country?.Name;
+            _webform = account.accountDetails?.webForm?.Name;
         }
     }
 

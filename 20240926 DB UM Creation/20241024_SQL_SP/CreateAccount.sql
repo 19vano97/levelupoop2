@@ -19,7 +19,6 @@ CREATE PROCEDURE dbo.CreateAccount
 -- add more stored procedure parameters here
 AS
     -- body of the stored procedure
-    -- Insert rows into table 'dbo.Account'
     
     IF EXISTS (SELECT Email FROM dbo.Account WHERE Email = @Email)
         RETURN -2;
