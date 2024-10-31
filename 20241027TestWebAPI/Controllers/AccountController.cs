@@ -58,6 +58,8 @@ namespace _20241027TestWebAPI.Controllers
             // accountDetails.account.FirstName = (string)firstNameParam.Value;
             // accountDetails.account.LastName = (string)lastNameParam.Value;
 
+            // TODO: needs to avoid SPs. Remove it
+
             return Ok(accountDetails);
         }
     }
