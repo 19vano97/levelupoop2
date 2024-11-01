@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("OceanLife")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9ca5e86e167557ce9ce83051871ffe426e3dcd8e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+59d638301bba37d8612efaf43172fb6b0ca78072")]
 [assembly: System.Reflection.AssemblyProductAttribute("OceanLife")]
 [assembly: System.Reflection.AssemblyTitleAttribute("OceanLife")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

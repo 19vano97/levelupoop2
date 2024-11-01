@@ -297,10 +297,10 @@ GO
 
 -- Delete rows from table 'dbo.Account'
 DELETE FROM dbo.AccountDetails
-WHERE AccountId IN (SELECT Id FROM dbo.Account WHERE Email = 'test9@yopmail.com');
+WHERE AccountId IN (SELECT Id FROM dbo.Account WHERE Email = 'test7@yopmail.com');
 
 DELETE FROM dbo.Account
-WHERE Email = 'test9@yopmail.com';
+WHERE Email = 'test7@yopmail.com';
 GO
 
 select distinct ClientId from dbo.Session
