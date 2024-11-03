@@ -17,6 +17,6 @@ public class AccountDBContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlServer(@"Server=192.168.1.100,1433;Database=UserManagement;User Id=dev;Password=P@ssw0rd;TrustServerCertificate=True;");
+        optionsBuilder.UseSqlServer(@"Server=192.168.1.101,1433;Database=UserManagement;User Id=dev;Password=P@ssw0rd;TrustServerCertificate=True;");
     }
 }
