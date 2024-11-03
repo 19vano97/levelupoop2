@@ -109,6 +109,7 @@ public class User
         {
 
             var getCountryId = context.countries
+                                .Include(c => c.accountDetails.country)
                                 .Where(c => c.Name == _country)
                                 .FirstOrDefault();
             
@@ -126,10 +127,10 @@ public class User
                 accountDetails = new AccountDetails
                 {
                     AccountId = context.accounts.Where(a => a.Email == _email).Select(a => a.Id).FirstOrDefault(),
-                    CountryId = (int)getCountryId.Id,
-                    WebFormId = (int)getWebformId.Id,
-                    country = getCountryId!,
-                    webForm = getWebformId!,
+                    country = CheckCountry(_country),
+                    webForm = ,
+                    CountryId = ,
+                    WebFormId = ,
                     CreateDate = DateTime.Now,
                     ModifyDate = DateTime.Now
                 },
@@ -228,6 +229,46 @@ public class User
             context.Add(newSession);
             context.SaveChanges();
         }
+    }
+
+    private Country CheckCountry(string country)
+    {
+        using (var context =new AccountDBContext())
+        {
+            var countryCheck = context.countries.FirstOrDefault(c => c.Name == country);
+
+            if (countryCheck == null)
+            {
+
+                countryCheck = new Country
+                {
+                    Name = country,
+                    CreateDate = DateTime.Now,
+                    ModifyDate = DateTime.Now
+                };
+
+                context.Add(countryCheck);
+                context.SaveChanges();
+
+                countryCheck.Id = context.countries.Where(c => c.Name == country).Select(c => c.Id).First();
+            }
+            else
+            {
+                var existedCountry = context.countries.FirstOrDefault(c => c.Name == country);
+
+                countryCheck = new Country
+                {
+                    Id = existedCountry.Id,
+                    Name = existedCountry.Name,
+                    CreateDate = existedCountry.CreateDate,
+                    ModifyDate = existedCountry.ModifyDate
+                };
+            }
+
+            return countryCheck;
+        }
+
+        
     }
 
 }

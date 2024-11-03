@@ -11,6 +11,7 @@ public class AccountController
     private bool _emailConfirm;
     private string _country;
     private Guid _sessionId;
+    private SQLConnectionToUm _con;
 
     #region Get
         public Guid AccountId
@@ -49,11 +50,15 @@ public class AccountController
         }
     #endregion
     
+    public AccountController(SQLConnectionToUm con)
+    {
+        _con = con;
+    }
+
     public void ChooseEmail()
     {
         string sqlCommand = "select Email from dbo.Account";
-        SQLConnectionToUm s1 = new SQLConnectionToUm();
-        object[] emails = s1.ExecuteSqlCommandSelect(sqlCommand);
+        object[] emails = _con.ExecuteSqlCommandSelect(sqlCommand);
 
         int pos = UI.EnterPositionFromCL(emails);
 
@@ -63,26 +68,25 @@ public class AccountController
     public void GetAccountDetails()
     {
         string sqlCommand = string.Format("SELECT a.Id, a.FirstName, a.LastName, a.EmailConfirm, c.Name FROM dbo.Account a JOIN dbo.AccountDetails ad on ad.AccountId = a.Id JOIN dbo.Country c on c.Id = ad.CountryId WHERE a.Email = '{0}'", _email);
-        SQLConnectionToUm s1 = new SQLConnectionToUm();
-        object[] accountDet = s1.ExecuteSqlCommandSelect(sqlCommand);
+        object[] accountDet = _con.ExecuteSqlCommandSelect(sqlCommand);
 
         _id = (Guid)accountDet[0];
         _firstName = (string)accountDet[1];
         _lastName = (string)accountDet[2];
         _emailConfirm = Convert.ToBoolean(Convert.ToInt32((int)accountDet[3]));
         _country = (string)accountDet[4];
+
+        System.Console.WriteLine("account details passed");
     }
 
     public void GetLoggedIn(int clientId, int deviceId)
     {
         string insertSession = string.Format("INSERT INTO dbo.Session ([AccountId], [ClientId], [DeviceId]) VALUES ('{0}', {1}, {2})", _id, clientId, deviceId);
-        SQLConnectionToUm s1 = new SQLConnectionToUm();
 
-        s1.ExecuteSqlCommand(insertSession);
+        _con.ExecuteSqlCommand(insertSession);
 
         string getSession = string.Format("SELECT Id FROM dbo.Session WHERE AccountId = '{0}'", _id);
-        SQLConnectionToUm selectConnection = new SQLConnectionToUm();
-        object[] getSessionObj = selectConnection.ExecuteSqlCommandSelect(getSession);
+        object[] getSessionObj = _con.ExecuteSqlCommandSelect(getSession);
 
         _sessionId = (Guid)getSessionObj[0];
     }
@@ -92,26 +96,31 @@ public class AccountController
         if (firstName != null)
         {
             string fistNameUpdate = string.Format("UPDATE dbo.Account SET [FirstName] = '{0}' WHERE Id = '{1}'", firstName, _id);
-            SQLConnectionToUm s1 = new SQLConnectionToUm();
-            s1.ExecuteSqlCommand(fistNameUpdate);
+            _con.ExecuteSqlCommand(fistNameUpdate);
             _firstName = firstName;
         }
 
         if (lastName != null)
         {
             string lastNameUpdate = string.Format("UPDATE dbo.Account SET [LastName] = '{0}' WHERE Id = '{1}'", lastName, _id);
-            SQLConnectionToUm s1 = new SQLConnectionToUm();
-            s1.ExecuteSqlCommand(lastNameUpdate);
+            _con.ExecuteSqlCommand(lastNameUpdate);
             _lastName = lastName;
         }
 
         if (email != null)
         {
             string emailUpdate = string.Format("UPDATE dbo.Account SET [Email] = '{0}' WHERE Id = '{1}'", email, _id);
-            SQLConnectionToUm s1 = new SQLConnectionToUm();
-            s1.ExecuteSqlCommand(emailUpdate);
+            _con.ExecuteSqlCommand(emailUpdate);
             _email = email;
         }
+    }
+
+    public void GetLoggedOut(int clientId, int deviceId)
+    {
+        string logoutSQL = string.Format("DELETE FROM dbo.Session  WHERE Id = '{0}'", _sessionId);
+        _con.ExecuteSqlCommand(logoutSQL);
+
+        _sessionId = Guid.Empty;
     }
 
     
