@@ -16,5 +16,10 @@ namespace _20241003_HW_WinForms_SQLConnection
         {
 
         }
+
+        public string Login
+        {
+            
+        }
     }
 }

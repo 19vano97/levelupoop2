@@ -4,6 +4,7 @@ using System.Data.SqlTypes;
 using _20241027TestWebAPI.Data;
 using _20241027TestWebAPI.Models;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
@@ -47,18 +48,16 @@ namespace _20241027TestWebAPI.Controllers
         }
 
         [HttpPost("login")]
-        public async Task PostAsync([FromBody] LoginModel login)
+        public async Task<ActionResult> PostAsync([FromBody] LoginModel login)
         {
             var doesUserExist = _context.Accounts.Where(a => a.Email == login.email && a.PasswordHash == login.password).FirstOrDefault();
             
-            if (doesUserExist != null)
+            if (doesUserExist == null)
             {
-                System.Console.WriteLine("super");
+                return BadRequest();
             }
-            else
-            {
-                System.Console.WriteLine("ppc");
-            }
+        
+            return Ok();
         }
     }
 }
