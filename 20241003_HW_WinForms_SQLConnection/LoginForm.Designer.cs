@@ -37,6 +37,7 @@
             // 
             // button1
             // 
+            button1.DialogResult = DialogResult.OK;
             button1.Location = new Point(324, 316);
             button1.Name = "button1";
             button1.Size = new Size(150, 46);
@@ -90,7 +91,6 @@
             Controls.Add(button1);
             Name = "LoginForm";
             Text = "Login";
-            Load += Form1_Load;
             ResumeLayout(false);
             PerformLayout();
         }

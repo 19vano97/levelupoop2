@@ -80,6 +80,7 @@
             Controls.Add(Header);
             Name = "ResultForm";
             Text = "Result";
+            Load += ResultForm_Load;
             ResumeLayout(false);
         }
 

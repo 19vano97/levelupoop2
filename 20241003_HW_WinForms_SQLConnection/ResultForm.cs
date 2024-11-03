@@ -26,5 +26,19 @@ namespace _20241003_HW_WinForms_SQLConnection
         {
 
         }
+
+        private void ResultForm_Load(object sender, EventArgs e)
+        {
+            LoginForm login = new LoginForm();
+
+            if (login.ShowDialog() == DialogResult.OK)
+            {
+
+            }
+            else
+            {
+                Close();
+            }
+        }
     }
 }
