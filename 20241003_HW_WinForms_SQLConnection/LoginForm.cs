@@ -17,9 +17,14 @@ namespace _20241003_HW_WinForms_SQLConnection
 
         }
 
-        public string Login
+        public string Email
         {
-            
+            get => txtEmail.Text;
+        }
+
+        public string Password
+        {
+            get => txtPassword.Text;
         }
     }
 }
