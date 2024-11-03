@@ -3,41 +3,43 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "20240823_HW_Delegate", "20240823_HW_Delegate\20240823_HW_Delegate.csproj", "{E4BEB53D-3DA3-4730-8BA2-065F37C5389F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "20240823_HW_Delegate", "20240823_HW_Delegate\20240823_HW_Delegate.csproj", "{E4BEB53D-3DA3-4730-8BA2-065F37C5389F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Library", "Library", "{923A1122-7963-413E-91AC-482FD6DEB303}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OceanLife", "OceanLife\OceanLife.csproj", "{A91B685C-77AF-4022-A027-1524387579ED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OceanLife", "OceanLife\OceanLife.csproj", "{A91B685C-77AF-4022-A027-1524387579ED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "20240823_Lesson_Publisher", "20240823_Lesson_Publisher\20240823_Lesson_Publisher.csproj", "{E2E0276D-9C54-4646-A903-23CAF4ACA57E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "20240823_Lesson_Publisher", "20240823_Lesson_Publisher\20240823_Lesson_Publisher.csproj", "{E2E0276D-9C54-4646-A903-23CAF4ACA57E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenerateRandomArray", "Library\GenerateRandomArray\GenerateRandomArray.csproj", "{62CA5AA0-8FC3-49E0-9458-F4F4BED57C89}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenerateRandomArray", "Library\GenerateRandomArray\GenerateRandomArray.csproj", "{62CA5AA0-8FC3-49E0-9458-F4F4BED57C89}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SingleList", "SingleList\SingleList.csproj", "{454EE2B3-8DA2-4F9A-8099-009790E4EDD7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SingleList", "SingleList\SingleList.csproj", "{454EE2B3-8DA2-4F9A-8099-009790E4EDD7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoubleList", "DoubleList\DoubleList.csproj", "{838B262D-5F98-4DCC-AF16-7F3E38C01003}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DoubleList", "DoubleList\DoubleList.csproj", "{838B262D-5F98-4DCC-AF16-7F3E38C01003}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TreeListDataStr", "TreeListDataStr\TreeListDataStr.csproj", "{44F03772-F58E-4747-9BA0-C31809EDBA2E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TreeListDataStr", "TreeListDataStr\TreeListDataStr.csproj", "{44F03772-F58E-4747-9BA0-C31809EDBA2E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HashTableDataStr", "HashTableDataStr\HashTableDataStr.csproj", "{01CEC9CF-36FA-4211-BD08-C57C3ABCF272}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HashTableDataStr", "HashTableDataStr\HashTableDataStr.csproj", "{01CEC9CF-36FA-4211-BD08-C57C3ABCF272}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OwnExceptions", "OwnExceptions", "{CC35DFDA-9A12-4B3C-975D-A43266191BDB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ListExceptions", "OwnExceptions\ListExceptions\ListExceptions.csproj", "{5C3141AA-5C6C-4189-BE93-2F65034A41DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ListExceptions", "OwnExceptions\ListExceptions\ListExceptions.csproj", "{5C3141AA-5C6C-4189-BE93-2F65034A41DC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TreeDataStructure", "Library\TreeDataStructure\TreeDataStructure.csproj", "{8349D34F-479B-48B8-8BD2-6CE746A6224F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TreeDataStructure", "Library\TreeDataStructure\TreeDataStructure.csproj", "{8349D34F-479B-48B8-8BD2-6CE746A6224F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeStamp", "Library\TimeStamp\TimeStamp.csproj", "{5AAE6354-8C7A-4F69-8F13-520C5FB093AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeStamp", "Library\TimeStamp\TimeStamp.csproj", "{5AAE6354-8C7A-4F69-8F13-520C5FB093AE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HashTablesIDictionary", "HashTablesIDictionary\HashTablesIDictionary.csproj", "{A74998E0-69E8-424F-8EFA-04C786B15865}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HashTablesIDictionary", "HashTablesIDictionary\HashTablesIDictionary.csproj", "{A74998E0-69E8-424F-8EFA-04C786B15865}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenericsLesson", "GenericsLesson\GenericsLesson.csproj", "{54F76A0C-B49F-4166-8F01-A47978BAE063}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenericsLesson", "GenericsLesson\GenericsLesson.csproj", "{54F76A0C-B49F-4166-8F01-A47978BAE063}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestSQLConnection", "TestSQLConnection\TestSQLConnection.csproj", "{F1E10254-DD06-4D68-891A-27D35CBB1FDD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestSQLConnection", "TestSQLConnection\TestSQLConnection.csproj", "{F1E10254-DD06-4D68-891A-27D35CBB1FDD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "20241027TestWebAPI", "20241027TestWebAPI\20241027TestWebAPI.csproj", "{D2960B6B-F6FC-43D9-960B-5177AC6BE1A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "20241027TestWebAPI", "20241027TestWebAPI\20241027TestWebAPI.csproj", "{D2960B6B-F6FC-43D9-960B-5177AC6BE1A2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "20241031_HW_FirstSQLConnection", "20241031_HW_FirstSQLConnection\20241031_HW_FirstSQLConnection.csproj", "{FA768BEC-E539-402E-8805-ED25C7F81EE9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "20241031_HW_FirstSQLConnection", "20241031_HW_FirstSQLConnection\20241031_HW_FirstSQLConnection.csproj", "{FA768BEC-E539-402E-8805-ED25C7F81EE9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "20241003_HW_WinForms_SQLConnection", "20241003_HW_WinForms_SQLConnection\20241003_HW_WinForms_SQLConnection.csproj", "{3E73DFE8-00E5-427E-87F3-F24FE8A32337}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -109,6 +111,10 @@ Global
 		{FA768BEC-E539-402E-8805-ED25C7F81EE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA768BEC-E539-402E-8805-ED25C7F81EE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FA768BEC-E539-402E-8805-ED25C7F81EE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E73DFE8-00E5-427E-87F3-F24FE8A32337}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E73DFE8-00E5-427E-87F3-F24FE8A32337}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E73DFE8-00E5-427E-87F3-F24FE8A32337}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E73DFE8-00E5-427E-87F3-F24FE8A32337}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -118,5 +124,8 @@ Global
 		{5C3141AA-5C6C-4189-BE93-2F65034A41DC} = {CC35DFDA-9A12-4B3C-975D-A43266191BDB}
 		{8349D34F-479B-48B8-8BD2-6CE746A6224F} = {923A1122-7963-413E-91AC-482FD6DEB303}
 		{5AAE6354-8C7A-4F69-8F13-520C5FB093AE} = {923A1122-7963-413E-91AC-482FD6DEB303}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7B153F7E-5485-4268-8068-45F0149736C7}
 	EndGlobalSection
 EndGlobal

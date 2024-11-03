@@ -1,7 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\Library\Generate1dArray\GenerateArray.csproj" />
     <ProjectReference Include="..\Library\GenerateRandomArray\GenerateRandomArray.csproj" />
   </ItemGroup>
 
