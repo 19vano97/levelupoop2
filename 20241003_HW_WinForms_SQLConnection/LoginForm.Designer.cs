@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             button1 = new Button();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
+            txtEmail = new TextBox();
+            txtPassword = new TextBox();
             label1 = new Label();
             label2 = new Label();
             SuspendLayout();
@@ -46,19 +46,19 @@
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
-            // textBox1
+            // txtEmail
             // 
-            textBox1.Location = new Point(301, 108);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(200, 39);
-            textBox1.TabIndex = 1;
+            txtEmail.Location = new Point(301, 108);
+            txtEmail.Name = "txtEmail";
+            txtEmail.Size = new Size(200, 39);
+            txtEmail.TabIndex = 1;
             // 
-            // textBox2
+            // txtPassword
             // 
-            textBox2.Location = new Point(301, 209);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(200, 39);
-            textBox2.TabIndex = 2;
+            txtPassword.Location = new Point(301, 209);
+            txtPassword.Name = "txtPassword";
+            txtPassword.Size = new Size(200, 39);
+            txtPassword.TabIndex = 2;
             // 
             // label1
             // 
@@ -86,8 +86,8 @@
             ClientSize = new Size(800, 450);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            Controls.Add(txtPassword);
+            Controls.Add(txtEmail);
             Controls.Add(button1);
             Name = "LoginForm";
             Text = "Login";
@@ -98,8 +98,8 @@
         #endregion
 
         private Button button1;
-        private TextBox textBox1;
-        private TextBox textBox2;
+        private TextBox txtEmail;
+        private TextBox txtPassword;
         private Label label1;
         private Label label2;
     }
