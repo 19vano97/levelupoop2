@@ -1,4 +1,5 @@
 ﻿using System.Data.SqlClient;
+using System.Security.AccessControl;
 using _20241031_HW_FirstSQLConnection;
 
 internal class Program
@@ -21,6 +22,7 @@ internal class Program
         a1.GetAccountDetails();
         a1.GetLoggedIn(4, 3);
         a1.UpdateDetails(lastName: "UpdatedLastName");
+        a1.GetLoggedOut();
 
         UI.ShowAccountDetails(a1);
 

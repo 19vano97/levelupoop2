@@ -109,7 +109,6 @@ public class User
         {
 
             var getCountryId = context.countries
-                                .Include(c => c.accountDetails.country)
                                 .Where(c => c.Name == _country)
                                 .FirstOrDefault();
             
@@ -128,9 +127,9 @@ public class User
                 {
                     AccountId = context.accounts.Where(a => a.Email == _email).Select(a => a.Id).FirstOrDefault(),
                     country = CheckCountry(_country),
-                    webForm = ,
-                    CountryId = ,
-                    WebFormId = ,
+                    webForm = CheckWebForm(_webform),
+                    CountryId = (int)getCountryId.Id,
+                    WebFormId = (int)getWebformId.Id,
                     CreateDate = DateTime.Now,
                     ModifyDate = DateTime.Now
                 },
@@ -266,6 +265,44 @@ public class User
             }
 
             return countryCheck;
+        }
+    } 
+
+    private WebForm CheckWebForm(string webForm)
+    {
+        using (var context =new AccountDBContext())
+        {
+            var webfromCheck = context.webForms.FirstOrDefault(c => c.Name == webForm);
+
+            if (webfromCheck == null)
+            {
+
+                webfromCheck = new WebForm
+                {
+                    Name = webForm,
+                    CreateDate = DateTime.Now,
+                    ModifyDate = DateTime.Now
+                };
+
+                context.Add(webfromCheck);
+                context.SaveChanges();
+
+                webfromCheck.Id = context.countries.Where(c => c.Name == webForm).Select(c => c.Id).First();
+            }
+            else
+            {
+                var existedWebForm = context.countries.FirstOrDefault(c => c.Name == webForm);
+
+                webfromCheck = new WebForm
+                {
+                    Id = existedWebForm.Id,
+                    Name = existedWebForm.Name,
+                    CreateDate = existedWebForm.CreateDate,
+                    ModifyDate = existedWebForm.ModifyDate
+                };
+            }
+
+            return webfromCheck;
         }
 
         

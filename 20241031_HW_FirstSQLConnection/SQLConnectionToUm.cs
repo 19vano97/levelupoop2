@@ -41,6 +41,11 @@ public sealed class SQLConnectionToUm
         _con = con;
     }
 
+    public SqlConnection Connection
+    {
+        get => _connection;
+    }
+
     public void OpenConnection()
     {
         _connection = new SqlConnection(_con.ToString());

@@ -1,4 +1,5 @@
 using System;
+using System.Data.SqlClient;
 
 namespace _20241031_HW_FirstSQLConnection;
 
@@ -115,10 +116,16 @@ public class AccountController
         }
     }
 
-    public void GetLoggedOut(int clientId, int deviceId)
+    public void GetLoggedOut()
     {
-        string logoutSQL = string.Format("DELETE FROM dbo.Session  WHERE Id = '{0}'", _sessionId);
-        _con.ExecuteSqlCommand(logoutSQL);
+        // string logoutSQL = string.Format("DELETE FROM dbo.Session  WHERE Id = '{0}'", _sessionId);
+        // _con.ExecuteSqlCommand(logoutSQL);
+
+        SqlCommand deleteSession = new SqlCommand("dbo.GetLoggedOut", _con.Connection);
+        deleteSession.CommandType = System.Data.CommandType.StoredProcedure;
+
+        deleteSession.Parameters.Add("@SessionId", System.Data.SqlDbType.UniqueIdentifier).Value = _sessionId;
+        deleteSession.ExecuteNonQuery();
 
         _sessionId = Guid.Empty;
     }
