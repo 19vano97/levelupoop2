@@ -15,9 +15,5 @@ public class Accounts
     public virtual AccountDetails accountDetails {get; set;}
     public virtual DateTime CreateDate {get; set;}
     public virtual DateTime ModifyDate {get; set;}
-
-    public Accounts(Guid? id)
-    {
-        Id = id;
-    }
+    public virtual AccountRoles accountRole {get; set;}
 }

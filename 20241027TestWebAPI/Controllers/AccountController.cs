@@ -52,7 +52,7 @@ namespace _20241027TestWebAPI.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<ActionResult> PostAsync([FromBody] LoginModel login)
+        public async Task<ActionResult> PostAsync([FromBody] Login login)
         {
             var doesUserExist = _context.Accounts.Where(a => a.Email == login.Email && a.PasswordHash == login.Password).FirstOrDefault();
             

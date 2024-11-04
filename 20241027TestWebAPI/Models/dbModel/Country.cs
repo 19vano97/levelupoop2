@@ -11,9 +11,4 @@ public class Country
     public virtual AccountDetails accountDetails {get; set;}
     public virtual DateTime CreateDate {get; set;}
     public virtual DateTime ModifyDate {get; set;}
-
-    public Country(int? id)
-    {
-        Id = id;
-    }
 }

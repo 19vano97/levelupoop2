@@ -11,9 +11,4 @@ public class WebForms
     public virtual AccountDetails accountDetails {get; set;}
     public virtual DateTime CreateDate {get; set;}
     public virtual DateTime ModifyDate {get; set;}
-
-    public WebForms(int? id)
-    {
-        Id = id;
-    }
 }
