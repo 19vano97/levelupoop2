@@ -3,13 +3,15 @@
 using Newtonsoft.Json;
 using System.Text;
 using System.Text.Json;
+using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace _20241003_HW_WinForms_SQLConnection.Controller
 {
     public class AccountController
     {
         public string pathToLogin = "/api/account/login";
-        public string pathToGetAllEmails = "/api/account/details/dev@yopmail.com";
+        public string pathToGetAllEmails = "/api/account";
+        public string pathToGetAccountDetails = "/api/account/details/";
         public string baseUrlAC;
 
         public AccountController(string baseUrl)
@@ -26,15 +28,13 @@ namespace _20241003_HW_WinForms_SQLConnection.Controller
         {
             using (var client = new HttpClient())
             {
-                // Prepare the data object with email and password
                 var data = new
                 {
                     Email = email,
                     Password = password
                 };
 
-                // Serialize the object to JSON
-                var json = JsonConvert.SerializeObject(data);
+                var json = JsonSerializer.Serialize(data);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
 
                 try
@@ -57,6 +57,23 @@ namespace _20241003_HW_WinForms_SQLConnection.Controller
             using (var client = new HttpClient())
             {
                 var response = client.GetAsync(string.Format($"{baseUrlAC}{pathToGetAllEmails}")).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var data = response.Content.ReadAsStringAsync().Result;
+
+                    return data.ToString();
+                }
+
+                return response.ToString();
+            }
+        }
+
+        public async Task<string> GetAccountDetails(string email)
+        {
+            using (var client = new HttpClient())
+            {
+                var response = client.GetAsync(string.Format($"{baseUrlAC}{pathToGetAccountDetails}{email}")).Result;
 
                 if (response.IsSuccessStatusCode)
                 {
