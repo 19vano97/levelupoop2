@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlTypes;
+using System.Text.Json;
 using _20241027TestWebAPI.Data;
 using _20241027TestWebAPI.Models;
 using Microsoft.AspNetCore.Http;
@@ -23,15 +24,16 @@ namespace _20241027TestWebAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Accounts>>> GetAccounts()
+        public async Task<ActionResult<string>> GetAccounts()
         {
             var getAccounts = _context.Accounts.Select(a => a.Email).ToList();
+            string jsonRes = JsonSerializer.Serialize(getAccounts);
 
-            return Ok(getAccounts);
+            return Ok(jsonRes);
         }
 
         [HttpGet("details/{email}")]
-        public async Task<ActionResult<IEnumerable<Accounts>>> GetAccountDetailsAsync(string email)
+        public async Task<ActionResult<string>> GetAccountDetailsAsync(string email)
         {
             var accountDetails = _context.AccountDetails.Include(a => a.account)
                                                         .Include(c => c.country)
@@ -44,7 +46,9 @@ namespace _20241027TestWebAPI.Controllers
                                                             ad.country.Name,
                                                             ad.account.CreateDate}).ToList();
 
-            return Ok(accountDetails);
+            string jsonRes = JsonSerializer.Serialize(accountDetails);
+
+            return Ok(jsonRes);
         }
 
         [HttpPost("login")]

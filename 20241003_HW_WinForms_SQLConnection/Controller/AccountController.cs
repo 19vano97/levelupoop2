@@ -1,23 +1,28 @@
 
 
+using Newtonsoft.Json;
+using System.Text;
+using System.Text.Json;
+
 namespace _20241003_HW_WinForms_SQLConnection.Controller
 {
     public class AccountController
     {
-        public string pathToLogin = "/login";
-        public string baseUrl;
+        public string pathToLogin = "/api/account/login";
+        public string pathToGetAllEmails = "/api/account/details/dev@yopmail.com";
+        public string baseUrlAC;
 
         public AccountController(string baseUrl)
         {
-            string url = string.Format("{0}{1}", baseUrl, pathToLogin);
+            baseUrlAC = baseUrl;  string.Format("{0}{1}", baseUrl, pathToLogin);
         }
 
-        public string LoginToService(string email, string password)
+        public async Task<bool> LoginToService(string email, string password)
         {
-            return PostLoginAsync(url, email, password);
+            return await PostLoginAsync(string.Format("{0}{1}", baseUrlAC, pathToLogin), email, password) == true;
         }
 
-        private static async Task<string> PostLoginAsync(string url, string email, string password)
+        private async Task<bool> PostLoginAsync(string url, string email, string password)
         {
             using (var client = new HttpClient())
             {
@@ -29,17 +34,38 @@ namespace _20241003_HW_WinForms_SQLConnection.Controller
                 };
 
                 // Serialize the object to JSON
-                var json = JsonSerializer.Serialize(data);
+                var json = JsonConvert.SerializeObject(data);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-                // Send the POST request with JSON content
-                var response = await client.PostAsync(url, content);
+                try
+                {
+                    var response = client.PostAsync(url, content).Result;
 
-                // Ensure success status code
-                response.EnsureSuccessStatusCode();
+                    return response.IsSuccessStatusCode;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error: {ex.Message}");
 
-                // Read the response body as a string
-                return await response.Content.ReadAsStringAsync();
+                    return false;
+                }
+            }
+        }
+
+        public async Task<string> GetAllEmails()
+        {
+            using (var client = new HttpClient())
+            {
+                var response = client.GetAsync(string.Format($"{baseUrlAC}{pathToGetAllEmails}")).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var data = response.Content.ReadAsStringAsync().Result;
+
+                    return data.ToString();
+                }
+
+                return response.ToString();
             }
         }
     }
