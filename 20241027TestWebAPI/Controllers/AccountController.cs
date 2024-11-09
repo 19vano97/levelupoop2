@@ -26,7 +26,11 @@ namespace _20241027TestWebAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<string>> GetAccounts()
         {
-            var getAccounts = _context.Accounts.Select(a => a.Email).ToList();
+            var getAccounts = _context.Accounts.Select(acc => new {acc.Id, acc.Email, acc.FirstName}).ToList();
+
+            //int sum = getAccounts.Count(fn => fn.FirstName == "Ivan");
+            // int max = getAccounts.Max(e => e.Length);
+
             string jsonRes = JsonSerializer.Serialize(getAccounts);
 
             return Ok(jsonRes);
@@ -54,9 +58,9 @@ namespace _20241027TestWebAPI.Controllers
         [HttpPost("login")]
         public async Task<ActionResult> PostAsync([FromBody] Login login)
         {
-            var doesUserExist = _context.Accounts.Where(a => a.Email == login.Email && a.PasswordHash == login.Password).FirstOrDefault();
+            var user = _context.Accounts.Where(a => a.Email == login.Email && a.PasswordHash == login.Password).FirstOrDefault();
             
-            if (doesUserExist == null)
+            if (user == null)
             {
                 return BadRequest();
             }
