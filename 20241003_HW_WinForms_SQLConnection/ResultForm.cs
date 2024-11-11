@@ -96,8 +96,7 @@ namespace _20241003_HW_WinForms_SQLConnection
 
         private IEnumerable<string> ParseEmails(string emails)
         {
-            var emailList = JsonSerializer.Deserialize<IEnumerable<string>>(emails);
-            return emailList;
+            return JsonSerializer.Deserialize<IEnumerable<string>>(emails);
         }
 
         private IEnumerable<Dictionary<string, object>> ParseJson(string jsonStr)
@@ -116,11 +115,6 @@ namespace _20241003_HW_WinForms_SQLConnection
         }
 
         private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void splitter1_SplitterMoved(object sender, SplitterEventArgs e)
         {
 
         }
