@@ -94,6 +94,8 @@ namespace LINQ_Schedule_Task
             var countStudentsInGroups = model.GetCountStudentsByGroups();
             var maxStudents = model.GetMaxOfStudentsByTeacher();
             var repeatedNames = model.GetRepeatedNames();
+            var groupSchedule = model.GetGroupSchedule(model.Groups.Where(g => g.ID == 3).FirstOrDefault());
+            var allInfoRoom = model.GetInformationByAllRooms();
 
             Console.WriteLine();
             Console.WriteLine();
