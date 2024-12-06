@@ -3,32 +3,27 @@ using CountLinesInFile;
 
 internal class Program
 {
-    public const string PATH = "./students.csv";
+    public const string PATH = "./enhanced_students_data.csv";
+    public const string PATH_DEBUG = "../../../enhanced_students_data.csv";
 
     private static void Main(string[] args)
     {
-        // CountLinesInAFile count = new CountLinesInAFile(PATH);
-        List<Student> students = new List<Student>();
+        ScheduleImport sc  = new ScheduleImport(PATH);  
 
-        int count = 0;
+        sc.Import();      
 
-        using (var reader = new StreamReader(@PATH))
-        {
-            while (reader.ReadLine() != null)
-            {
-                // if (count == 0)
-                // {
-                //     count++;
-                //     continue;
-                // }
+        ScheduleExport csvSchedule = new ScheduleExport("test", "csv", sc.Schedule);
+        ScheduleExport binSchedule = new ScheduleExport("test", "bin", sc.Schedule);
 
-                var lines = reader.ReadLine();
-                var values = lines.Split(',', ';');
-                
-                students.Add(new Student() {firstName = values[0], lastName = values[1], age = int.Parse(values[2])});
-                count++;
-            }
-        }
+        csvSchedule.Export();
+        binSchedule.Export();
 
+        long initFileSize = new FileInfo(PATH).Length;
+        long binFileSize = new FileInfo(binSchedule.fileName).Length;
+        long csvOutputFileSize = new FileInfo(csvSchedule.fileName).Length;
+
+        System.Console.WriteLine(initFileSize);
+        System.Console.WriteLine(binFileSize);
+        System.Console.WriteLine(csvOutputFileSize);
     }
 }

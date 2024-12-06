@@ -47,6 +47,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "20241201_HW_CsvFileOpener",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CountLinesInFile", "Library\CountLinesInFile\CountLinesInFile.csproj", "{7DA7D740-264B-4A9C-AFA8-4A77FB63A16B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RandomId", "Library\RandomId\RandomId.csproj", "{0C1C208D-34C9-44AD-B9A7-0B2996074AFF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -133,6 +135,10 @@ Global
 		{7DA7D740-264B-4A9C-AFA8-4A77FB63A16B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7DA7D740-264B-4A9C-AFA8-4A77FB63A16B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7DA7D740-264B-4A9C-AFA8-4A77FB63A16B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C1C208D-34C9-44AD-B9A7-0B2996074AFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C1C208D-34C9-44AD-B9A7-0B2996074AFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C1C208D-34C9-44AD-B9A7-0B2996074AFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C1C208D-34C9-44AD-B9A7-0B2996074AFF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -143,6 +149,7 @@ Global
 		{8349D34F-479B-48B8-8BD2-6CE746A6224F} = {923A1122-7963-413E-91AC-482FD6DEB303}
 		{5AAE6354-8C7A-4F69-8F13-520C5FB093AE} = {923A1122-7963-413E-91AC-482FD6DEB303}
 		{7DA7D740-264B-4A9C-AFA8-4A77FB63A16B} = {923A1122-7963-413E-91AC-482FD6DEB303}
+		{0C1C208D-34C9-44AD-B9A7-0B2996074AFF} = {923A1122-7963-413E-91AC-482FD6DEB303}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7B153F7E-5485-4268-8068-45F0149736C7}

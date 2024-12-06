@@ -2,9 +2,11 @@ using System;
 
 namespace _20241201_HW_CsvFileOpener;
 
-public class Student
+public class Student : Person
 {
-    public string firstName;
-    public string lastName;
-    public int age;
+    public Group group;
+
+    public Student(string fn, string ln) : base(fn, ln)
+    {
+    }
 }
