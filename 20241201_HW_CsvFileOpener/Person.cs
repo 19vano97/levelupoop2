@@ -14,4 +14,7 @@ public class Person
         firstName = fn;
         lastName = ln;
     }
+
+    public Person()
+    {}
 }

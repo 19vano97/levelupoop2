@@ -7,4 +7,7 @@ public class Teacher : Person
     public Teacher(string fn, string ln) : base(fn, ln)
     {
     }
+
+    public Teacher() : base()
+    {}
 }

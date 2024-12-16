@@ -50,7 +50,7 @@ namespace LINQ_Schedule_Task
             _schedule.Add(new Schedule() { TeacherId = 1, Room = 101, Subject = "Programming", LessonNumber = 1, groupId = 1, Day = DayOfWeek.Monday });
             _schedule.Add(new Schedule() { TeacherId = 2, Room = 102, Subject = "Testing", LessonNumber = 2, groupId = 1, Day = DayOfWeek.Monday });
             _schedule.Add(new Schedule() { TeacherId = 3, Room = 103, Subject = "Management", LessonNumber = 3, groupId = 1, Day = DayOfWeek.Monday });
-            _schedule.Add(new Schedule() { TeacherId = 15, Room = 104, Subject = "Programming", LessonNumber = 4, groupId = 1, Day = DayOfWeek.Monday });
+            //_schedule.Add(new Schedule() { TeacherId = 15, Room = 104, Subject = "Programming", LessonNumber = 4, groupId = 1, Day = DayOfWeek.Monday });
             _schedule.Add(new Schedule() { TeacherId = 12, Room = 105, Subject = "Management", LessonNumber = 5, groupId = 1, Day = DayOfWeek.Monday });
             _schedule.Add(new Schedule() { TeacherId = 19, Room = 106, Subject = "Testing", LessonNumber = 6, groupId = 1, Day = DayOfWeek.Monday });
             
@@ -354,9 +354,28 @@ namespace LINQ_Schedule_Task
         }
 
 
-        //public IEnumerable<(Teacher, int)> GetAverageOfStudentsByTeacher()
-        //{
-        //    return GetNumberOfStudentsByTeacher().;
-        //}
+        public IEnumerable<ScheduleFEFormat> GetFreeSpotsOfGroup(Group group)
+        {
+            var exisitngLessons = _schedule.Where(s => s.groupId == group.ID).Where(s => s.Day == DayOfWeek.Monday).Select(s => s.LessonNumber);
+            int[] existingLessonsToInt = new int[exisitngLessons.Count()];
+            int[] lessonsCount = new int[DayLesson.MAX_DAY_LESSONS_COUNT];
+            int index = 1;
+
+            for (int i = 0; i < lessonsCount.Length; i++)
+            {
+                lessonsCount[i] = index;
+                index++;
+            }
+
+            index = 0;
+
+            foreach (var item in exisitngLessons)
+            {
+                existingLessonsToInt[index] = item;
+                index++;
+            }
+
+            return null;
+        }
     }
 }
