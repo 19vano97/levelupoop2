@@ -1,23 +1,30 @@
 using System;
+using System.Text.Json;
+using System.Text.Json.Nodes;
+using System.Xml;
+using System.Xml.Serialization;
 
 namespace _20241201_HW_CsvFileOpener;
 
-public abstract class ImportFile
+public abstract class ImportFile : FileController
 {
-    public abstract ScheduleListDataView Import(string fileName);
+}
+
+public abstract class ImportTextFile : ImportFile
+{
 }
 
 public class ImportBinary : ImportFile
 {
-    public override ScheduleListDataView Import(string fileName)
+    public override List<Schedule> Import(string fileName)
     {
         throw new NotImplementedException();
     }
 }
 
-public class ImportCSV : ImportFile
+public class ImportCSV : ImportTextFile
 {
-    public override ScheduleListDataView Import(string fileName)
+    public override List<Schedule> Import(string fileName)
     {
         ScheduleListDataView scheduleList = new ScheduleListDataView();
         int count = 0;
@@ -41,7 +48,7 @@ public class ImportCSV : ImportFile
                 
                 if (groupToBeChecked == null)
                 {
-                    scheduleList.groups.Add(new Group() {name = values[2]});
+                    scheduleList.groups.Add(new Group(values[2]));
                     groupToBeChecked = scheduleList.groups.Where(g => g.name == values[2]).First();
                 }
                 
@@ -60,7 +67,31 @@ public class ImportCSV : ImportFile
                 scheduleList.schedules.Add(new Schedule() {studentInfo = studentToBeChecked, teacher = teacherToBeChecked, subject = values[5], room = int.Parse(values[6]) });
             }
 
-            return scheduleList;
+            return scheduleList.schedules;
+        }
+    }
+
+    public class ImportJson : ImportTextFile
+    {
+        public override List<Schedule> Import(string data)
+        {
+            return JsonSerializer.Deserialize<List<Schedule>>(data, new JsonSerializerOptions {IncludeFields = true});
+        }
+    }
+
+    public class ImportXml : ImportTextFile
+    {
+        public override List<Schedule> Import(string fileName)
+        {
+            List<Schedule> schedules = new List<Schedule>();
+            XmlSerializer serializer = new XmlSerializer(typeof(List<Schedule>));
+
+            using (var reader = XmlReader.Create(fileName))
+            {
+                schedules = (List<Schedule>)serializer.Deserialize(reader);
+            }
+
+            return schedules;
         }
     }
 }

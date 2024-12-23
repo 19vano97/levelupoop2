@@ -1,7 +1,0 @@
-@startuml
-abstract class GenerateArray {
-    + GenerateArray(numOfElements:int)
-    + GenerateArray(rows:int, columns:int)
-    + {abstract} Generate() : void
-}
-@enduml

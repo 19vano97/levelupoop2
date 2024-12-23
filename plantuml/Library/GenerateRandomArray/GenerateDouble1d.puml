@@ -1,7 +1,0 @@
-@startuml
-class GenerateDouble1d {
-    + GenerateDouble1d(numOfElements:int)
-    + <<override>> Generate() : void
-}
-GenerateArray <|-- GenerateDouble1d
-@enduml

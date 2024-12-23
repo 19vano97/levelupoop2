@@ -1,5 +1,0 @@
-@startuml
-abstract class Generate1dArray {
-    + Generate1dArray()
-}
-@enduml

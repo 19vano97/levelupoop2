@@ -1,8 +1,0 @@
-@startuml
-class SubscriberEventArgs {
-    + SubscriberEventArgs(p:PublisherEventArgs)
-    + Dispose() : void
-    + IterationCounterHandler(sender:object, args:NewiterationEventArgs) : void
-    + AllIterationCount : int <<get>>
-}
-@enduml

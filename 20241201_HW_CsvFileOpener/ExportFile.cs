@@ -5,7 +5,7 @@ using System.Xml.Serialization;
 
 namespace _20241201_HW_CsvFileOpener;
 
-public abstract class ExportFile
+public abstract class ExportFile : FileController
 {
     public abstract bool Export(string fileName, List<Schedule> schedules);
 }
@@ -37,7 +37,11 @@ public class ExportBinary : ExportFile
     }
 }
 
-public class ExportCSV : ExportFile
+public abstract class ExportToTextFile : ExportFile
+{
+}
+
+public class ExportCSV : ExportToTextFile
 {
     public override bool Export(string fileName, List<Schedule> schedules)
     {
@@ -66,7 +70,7 @@ public class ExportCSV : ExportFile
     }
 }
 
-public class ExportJson : ExportFile
+public class ExportJson : ExportToTextFile
 {
     public override bool Export(string fileName, List<Schedule> schedules)
     {
@@ -74,20 +78,10 @@ public class ExportJson : ExportFile
         {
             using (var fs = new FileStream(fileName, FileMode.Create, FileAccess.Write))
             {                
-                StreamWriter sw = new StreamWriter(fs);
-                string res = JsonSerializer.Serialize(schedules.Select(s => new {student = new {s.studentInfo.id,
-                                                                                                                 s.studentInfo.firstName,
-                                                                                                                 s.studentInfo.lastName, 
-                                                                                                                 s.studentInfo.group.name},
-                                                                                                  teacher = new {s.teacher.id,
-                                                                                                                 s.teacher.firstName,
-                                                                                                                 s.teacher.lastName},
-                                                                                                  s.subject,
-                                                                                                  s.room}));
-                sw.Write(res);
-
-                return true;
+                JsonSerializer.Serialize(fs, schedules);
             }
+
+            return true;
         }
         catch (InvalidOperationException ex)
         {
@@ -96,7 +90,7 @@ public class ExportJson : ExportFile
         }
     }
 
-    public class ExportXML : ExportFile
+    public class ExportXML : ExportToTextFile
     {
         public override bool Export(string fileName, List<Schedule> schedules)
         {
@@ -107,9 +101,9 @@ public class ExportJson : ExportFile
                 using (var fs = new FileStream(fileName, FileMode.Create, FileAccess.Write))
                 {                
                     serializer.Serialize(fs, schedules);
-
-                    return true;
                 }
+
+                return true;
             }
             catch (InvalidOperationException ex)
             {

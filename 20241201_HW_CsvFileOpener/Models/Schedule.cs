@@ -7,10 +7,10 @@ namespace _20241201_HW_CsvFileOpener;
 [XmlInclude(typeof(Teacher))]
 public class Schedule
 {
-    public Student studentInfo;
-    public Teacher teacher;
-    public string subject;
-    public int room;
+    public Student studentInfo { get; set; }
+    public Teacher teacher { get; set; }
+    public string subject { get; set; }
+    public int room { get; set; }
 
     public override string ToString()
     {
