@@ -57,7 +57,7 @@ namespace _20241003_HW_WinForms_SQLConnection
                 string emails = getEmails.GetAllEmails().Result;
 
                 OutputEmails(emails);
-                grdEmailShow.CellContentClick += dataGridView1_CellContentClick;
+                //grdEmailShow.CellContentClick += dataGridView1_CellContentClick;
             }
             else
             {
