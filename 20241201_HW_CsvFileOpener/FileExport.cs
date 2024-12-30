@@ -5,14 +5,13 @@ using System.Xml.Serialization;
 
 namespace _20241201_HW_CsvFileOpener;
 
-public abstract class ExportFile : FileController
+public abstract class FileExport : FileController<Schedule>
 {
-    public abstract bool Export(string fileName, List<Schedule> schedules);
+    public override bool Export(string fileName, List<Schedule> list) => false;
 }
 
-public class ExportBinary : ExportFile
+public class ExportBinary : FileExport
 {
- 
     public override bool Export(string fileName, List<Schedule> schedules)
     {
         try
@@ -37,7 +36,7 @@ public class ExportBinary : ExportFile
     }
 }
 
-public abstract class ExportToTextFile : ExportFile
+public abstract class ExportToTextFile : FileExport
 {
 }
 

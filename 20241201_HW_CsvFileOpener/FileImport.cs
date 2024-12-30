@@ -6,15 +6,16 @@ using System.Xml.Serialization;
 
 namespace _20241201_HW_CsvFileOpener;
 
-public abstract class ImportFile : FileController
+public abstract class FileImport : FileController<Schedule>
+{
+    public override List<Schedule> Import(string fileName) => null;
+}
+
+public abstract class ImportTextFile : FileImport
 {
 }
 
-public abstract class ImportTextFile : ImportFile
-{
-}
-
-public class ImportBinary : ImportFile
+public class ImportBinary : FileImport
 {
     public override List<Schedule> Import(string fileName)
     {

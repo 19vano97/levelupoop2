@@ -2,15 +2,14 @@ using System;
 
 namespace _20241201_HW_CsvFileOpener;
 
-public class FileController
+public abstract class FileController<T>
 {
-    public string pathToFile {get; set;}
-
-    public virtual List<Schedule> Open() => null;
+    public virtual List<T> Open() => null;
 
     public virtual bool Save() => false;
 
-    public virtual List<Schedule> Import(string fileName) => null;
+    public virtual List<T> Import(string fileName) => null;
 
-    public virtual bool Export(string fileName, List<Schedule> schedules) => false;
+    public virtual bool Export(string fileName, List<T> list) => false;
+
 }
