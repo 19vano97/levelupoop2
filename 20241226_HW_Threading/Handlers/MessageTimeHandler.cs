@@ -54,11 +54,11 @@ public class MessageTimeHandler
     private string GetTypeToString(object sender)
     {
         if (sender is BubbleSort)
-            return "Bubble short";
+            return "Bubble sort";
         else if (sender is InsertSort)
-            return "Insert short";
+            return "Insert sort";
         else if (sender is QuickSort)
-            return "Quick short";
+            return "Quick sort";
         else
             return null;
     }
