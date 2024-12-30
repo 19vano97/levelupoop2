@@ -1,7 +1,0 @@
-@startuml
-abstract class SortDoubleArray {
-    + SortDoubleArray(arrayToSort:double[])
-    + {abstract} Sort() : void
-    + RunSort() : void
-}
-@enduml

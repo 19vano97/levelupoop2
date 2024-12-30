@@ -1,0 +1,7 @@
+/Users/ivanhontar/Work/levelUp/levelupoop2/20241115_LINQ_Schedule_Task/bin/Debug/LINQ_Schedule_Task.exe.config
+/Users/ivanhontar/Work/levelUp/levelupoop2/20241115_LINQ_Schedule_Task/bin/Debug/LINQ_Schedule_Task.exe
+/Users/ivanhontar/Work/levelUp/levelupoop2/20241115_LINQ_Schedule_Task/bin/Debug/LINQ_Schedule_Task.pdb
+/Users/ivanhontar/Work/levelUp/levelupoop2/20241115_LINQ_Schedule_Task/obj/Debug/LINQ_Schedule_Task.csproj.AssemblyReference.cache
+/Users/ivanhontar/Work/levelUp/levelupoop2/20241115_LINQ_Schedule_Task/obj/Debug/LINQ_Schedule_Task.csproj.CoreCompileInputs.cache
+/Users/ivanhontar/Work/levelUp/levelupoop2/20241115_LINQ_Schedule_Task/obj/Debug/LINQ_Schedule_Task.exe
+/Users/ivanhontar/Work/levelUp/levelupoop2/20241115_LINQ_Schedule_Task/obj/Debug/LINQ_Schedule_Task.pdb

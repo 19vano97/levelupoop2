@@ -1,6 +1,0 @@
-@startuml
-class BL {
-    + {static} GetRandomInt(minValue:int, maxValue:int) : int
-    + {static} GetKillsByIteration(oc:Ocean) : int
-}
-@enduml

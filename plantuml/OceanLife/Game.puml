@@ -1,5 +1,0 @@
-@startuml
-class Game {
-    + Game()
-}
-@enduml

@@ -1,8 +1,0 @@
-@startuml
-class Publisher {
-    + Subscribe(handler:NewIterationDelegate) : void
-    + Unsubscribe(handler:NewIterationDelegate) : void
-    + Publisher(iterationCount:int)
-    + Run() : void
-}
-@enduml

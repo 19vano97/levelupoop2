@@ -1,7 +1,0 @@
-@startuml
-class BubbleSort {
-    + BubbleSort(arrayToSort:double[])
-    + <<override>> Sort() : void
-}
-SortDoubleArray <|-- BubbleSort
-@enduml

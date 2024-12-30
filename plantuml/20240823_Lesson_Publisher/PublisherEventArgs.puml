@@ -1,6 +1,0 @@
-@startuml
-class PublisherEventArgs {
-    + PublisherEventArgs(iterationCount:int)
-    + Run() : void
-}
-@enduml

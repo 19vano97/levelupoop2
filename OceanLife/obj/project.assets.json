@@ -8,27 +8,24 @@
     "net8.0": []
   },
   "packageFolders": {
-    "C:\\Users\\vanil\\.nuget\\packages\\": {}
+    "/Users/ivanhontar/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\vanil\\source\\repos\\19vano97\\levelupoop2\\OceanLife\\OceanLife.csproj",
+      "projectUniqueName": "/Users/ivanhontar/Work/levelUp/levelupoop2/OceanLife/OceanLife.csproj",
       "projectName": "OceanLife",
-      "projectPath": "C:\\Users\\vanil\\source\\repos\\19vano97\\levelupoop2\\OceanLife\\OceanLife.csproj",
-      "packagesPath": "C:\\Users\\vanil\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\vanil\\source\\repos\\19vano97\\levelupoop2\\OceanLife\\obj\\",
+      "projectPath": "/Users/ivanhontar/Work/levelUp/levelupoop2/OceanLife/OceanLife.csproj",
+      "packagesPath": "/Users/ivanhontar/.nuget/packages/",
+      "outputPath": "/Users/ivanhontar/Work/levelUp/levelupoop2/OceanLife/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\vanil\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/Users/ivanhontar/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -41,11 +38,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -67,7 +59,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.401/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

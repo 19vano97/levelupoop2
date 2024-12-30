@@ -1,9 +1,0 @@
-@startuml
-class Subscriber {
-    + Subscriber(p:PublisherEvent)
-    + Dispose() : void
-    + IterationCounterHandler(iteration:int) : void
-    + AllIterationCount : int <<get>>
-}
-IDisposable <|-- Subscriber
-@enduml

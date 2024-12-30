@@ -1,7 +1,0 @@
-@startuml
-class InsertSort {
-    + InsertSort(arrayToSort:double[])
-    + <<override>> Sort() : void
-}
-SortDoubleArray <|-- InsertSort
-@enduml

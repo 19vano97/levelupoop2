@@ -1,0 +1,18 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace LINQ_Schedule_Task
+{
+    class Teacher : Person
+    {
+        // Специализация преподавателя
+        public string Specialty
+        {
+            get;
+            set;
+        }
+    }
+}

@@ -1,8 +1,0 @@
-@startuml
-class UI {
-    + {static} DisplayBorder() : void
-    + {static} DisplayCells(oc:Ocean) : void
-    + {static} DisplayStats(oc:Ocean, iterations:int) : void
-    + {static} DisplayKills(oc:Ocean) : void
-}
-@enduml
