@@ -1,5 +1,6 @@
 using System;
 using _20241226_HW_Threading.Handlers;
+using _20241226_HW_Threading.Interfaces;
 using _20241226_HW_Threading.Publisher;
 
 namespace _20241226_HW_Threading.Model;
@@ -13,6 +14,19 @@ public abstract class SortDoubleArray
     protected EventHandler<IterationDateTimeEventArgs> _endTimeEvent;
     protected EventHandler<DifferenceInTimeEventArgs> _differenceInTime;
     protected MessageTimeHandler _messageTimeDisplayed;
+    protected EventHandler<IterationEventArgs> _iterationEvent;
+    protected IterationHandler _iterationDisplayed;
+    protected ILogger _logger;
+
+    public SortDoubleArray(double[] doubles, ILogger logger)
+    {
+        _doubles = (double[])doubles.Clone();
+        _messageTimeDisplayed = new MessageTimeHandler(new Views.UI());
+        _logger = logger;
+        _iterationDisplayed = new IterationHandler(_logger);
+        _messageTimeDisplayed.Subscribe(this);
+        _iterationDisplayed.Subscribe(this);
+    }
 
     public SortDoubleArray(double[] doubles)
     {
@@ -47,6 +61,12 @@ public abstract class SortDoubleArray
     {
         add => _differenceInTime += value;
         remove => _differenceInTime -= value;
+    }
+
+    public event EventHandler<IterationEventArgs> IterationEvent
+    {
+        add => _iterationEvent += value;
+        remove => _iterationEvent -= value;
     }
 
     public virtual void Run()

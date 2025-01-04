@@ -1,5 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 using _20241226_HW_Threading.Handlers;
+using _20241226_HW_Threading.Interfaces;
 using _20241226_HW_Threading.Model;
 using _20241226_HW_Threading.Services;
 using GenerateRandomArray;
@@ -14,52 +15,98 @@ internal class Program
         
         Console.Clear();
 
-        var bubbleSortSeq = new BubbleSort(d1);
-        var quickSortSeq = new QuickSort(d1);
-        var insertSortSeq = new InsertSort(d1);
-        var loadingSeq = new Thread(() => Loading.Process(80));
+        // using (var logger = new Logger(string.Format($"{DateTime.Now.ToString("yyyyMMddTHHmmss")}_Sequence.log")))
+        // {
+        //     var bubbleSortSeq = new BubbleSort(d1, logger);
+        //     var bubbleSortSeq1 = new BubbleSort(d1, logger);
+        //     var quickSortSeq = new QuickSort(d1, logger);
+        //     var insertSortSeq = new InsertSort(d1, logger);
+        //     var loadingSeq = new Thread(() => LoadingService.Process(80));
+    
+            
+        //     // loadingSeq.Start();
+    
+        //     System.Console.WriteLine("Sequence");
+        //     timeTrackerSeq.On();
+        //     bubbleSortSeq.Run();
+        //     bubbleSortSeq1.Run();
+        //     // quickSortSeq.Run();
+        //     // insertSortSeq.Run();
+    
+        //     timeTrackerSeq.Off();
+    
+        //     // loadingSeq.Join();
+        // }
 
-        
-        //loadingSeq.Start();
+        // using (var logger = new Logger(string.Format($"{DateTime.Now.ToString("yyyyMMddTHHmmss")}_Parallel.log")))
+        // {
+        //     // Thread loadingThreadSort = new Thread(() => LoadingService.Process(80));
+            
+        //     var timeTrackerPar = new TimeTracker();
+    
+        //     var bubbleSortTread = new BubbleSort(d1, logger);
+        //     Thread bubbleThread = new Thread(bubbleSortTread.Run);
 
-        System.Console.WriteLine("Sequence");
-        timeTrackerSeq.On();
-        bubbleSortSeq.Run();
-        quickSortSeq.Run();
-        insertSortSeq.Run();
+        //     var bubbleSortTread1 = new BubbleSort(d1, logger);
+        //     Thread bubbleThread1 = new Thread(bubbleSortTread1.Run);
+    
+        //     var quickSortThread = new QuickSort(d1, logger);
+        //     Thread quickThread = new Thread(quickSortThread.Run);
+            
+        //     var insertSortThread = new InsertSort(d1, logger);
+        //     Thread insertThread = new Thread(insertSortThread.Run);
 
-        timeTrackerSeq.Off();
+        //     //loadingThreadSort.Start();
+        //     System.Console.WriteLine("Parallel");
+            
+        //     timeTrackerPar.On();
+        //     // quickThread.Start();
+        //     bubbleThread.Start();
+        //     bubbleThread1.Start();
+        //     // insertThread.Start();
 
-        //loadingSeq.Join();
+        //     // quickThread.Join();
+        //     bubbleThread.Join();
+        //     bubbleThread1.Join();
+        //     // insertThread.Join();
+
+        //     timeTrackerPar.Off();
+        // }
+
+        {
+            var bubbleSortSeq = new BubbleSort(d1);
+            var bubbleSortSeq1 = new BubbleSort(d1);
+
+            System.Console.WriteLine("Sequence");
+            timeTrackerSeq.On();
+            bubbleSortSeq.Run();
+            bubbleSortSeq1.Run();
+
+            timeTrackerSeq.Off();
+        }
+
+        {
+            var timeTrackerPar = new TimeTracker();
+    
+            var bubbleSortTread = new BubbleSort(d1);
+            Thread bubbleThread = new Thread(bubbleSortTread.Run);
+
+            var bubbleSortTread1 = new BubbleSort(d1);
+            Thread bubbleThread1 = new Thread(bubbleSortTread1.Run);
 
 
-        Thread loadingThreadSort = new Thread(() => Loading.Process(80));
-        
-        var timeTrackerPar = new TimeTracker();
+            //loadingThreadSort.Start();
+            System.Console.WriteLine("Parallel");
+            
+            timeTrackerPar.On();
 
-        var bubbleSortTread = new BubbleSort(d1);
-        Thread bubbleThread = new Thread(bubbleSortTread.Run);
+            bubbleThread.Start();
+            bubbleThread1.Start();
 
-        var quickSortThread = new QuickSort(d1);
-        Thread quickThread = new Thread(quickSortThread.Run);
-        
-        var insertSortThread = new InsertSort(d1);
-        Thread insertThread = new Thread(insertSortThread.Run);
+            bubbleThread.Join();
+            bubbleThread1.Join();
 
-        
-        
-        //loadingThreadSort.Start();
-        System.Console.WriteLine("Parallel");
-        
-        timeTrackerPar.On();
-        quickThread.Start();
-        bubbleThread.Start();
-        insertThread.Start();
-
-        quickThread.Join();
-        bubbleThread.Join();
-        insertThread.Join();
-
-        timeTrackerPar.Off();
+            timeTrackerPar.Off();
+        }
     }
 }

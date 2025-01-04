@@ -12,4 +12,8 @@
     <ProjectReference Include="../Library/GenerateRandomArray/GenerateRandomArray.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Logs/" />
+  </ItemGroup>
+
 </Project>

@@ -2,7 +2,7 @@ using System;
 
 namespace _20241226_HW_Threading.Services;
 
-public static class Loading
+public static class LoadingService
 {
     public static void Process(object data, int speedLoader = 500)
     {
