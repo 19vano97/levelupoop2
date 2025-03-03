@@ -69,7 +69,7 @@ public abstract class SortDoubleArray
         remove => _iterationEvent -= value;
     }
 
-    public virtual void Run()
+    public async Task Run()
     {
         _startTime = DateTime.Now;
         //_startTimeEvent?.Invoke(this, new IterationDateTimeEventArgs(_startTime));

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overview of ASP.NET Core MVC</title>
+</head>
+<body>
+    <header class="header">
+        <h1>Overview of ASP.NET Core MVC</h1>
+        <div class="header__articleInfo">
+            <ul class="header__articleInfo__date">
+                <li>Article</li>
+                <li>06/17/2024</li>
+                <li>16 contributors</li>
+            </ul>
+        </div>
+    </header>
+    <aside class="aside-left">
+        <div class="asleft__verion"></div>
+        <div class="asleft__content">
+            <div class="asleft__content__filter">
+                <div class="asleft__content__filter__input">
+                    <input type="text">
+                </div>
+            </div>
+            <div class="asleft__content__categories">
+                <ul class="asleft__content__categories_tree">
+                    <li><a href="">ASP.NET Core documentation</a></li>
+                    <li>
+                        <span>Overview</span>
+                        <li><a href="">About ASP.NET Core</a></li>
+                        <li><a href="">Compare ASP.NET Core and ASP.NET</a></li>
+                        <li><a href="">Compare .NET and .NET Framework</a></li>
+                    </li>
+                    <li><a href="">Get Started</a></li>
+                </ul>
+            </div>
+        </div>
+    </aside>
+    <aside class="aside-right">
+
+    </aside>
+    <main>
+        <div class="content">
+            <div class="content__articleContent">
+                <h3>In this acrtice</h3>
+                <ul class="content__articleContent_list">
+                    <ul><a href="#mvcPattern">MVC pattern</a></ul>
+                    <ul><a href="#aspnetCoreMVC">ASP.NET Core MVC</a></ul>
+                    <ul><a href="#routing">Routing</a></ul>
+                    <ul><a href="#modelBinding">Model binding</a></ul>
+                </ul>
+            </div>
+            <div class="content__author">
+                <p>By <a href="https://ardalis.com/">Steve Smith</a></p>
+            </div>
+            <div class="content__mvcIs">
+                <p>ASP.NET Core MVC is a rich framework for building web apps and APIs using the Model-View-Controller design pattern.</p>
+            </div>
+            <div class="content__mvcPattern", id="mvcPattern">
+                <h2>MVC pattern</h2>
+                <div class="content__mvcPattern_text">
+                    <p> Model-View-Controller (MVC) architectural pattern separates an application into three main groups of components: Models, Views, and Controllers. This pattern helps to achieve <a href="https://learn.microsoft.com/en-us/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#separation-of-concerns">separation of concerns</a>. Using this pattern, user requests are routed to a Controller which is responsible for working with the Model to perform user actions and/or retrieve results of queries. The Controller chooses the View to display to the user, and provides it with any Model data it requires.</p>
+                    <p>The following diagram shows the three main components and which ones reference the others:</p>
+                    <div class="content__mvcPattern_text__diagram">
+                        <img src="./img/mvc.png" alt="">
+                    </div>
+                    <p>This delineation of responsibilities helps you scale the application in terms of complexity because it's easier to code, debug, and test something (model, view, or controller) that has a single job. It's more difficult to update, test, and debug code that has dependencies spread across two or more of these three areas. For example, user interface logic tends to change more frequently than business logic. If presentation code and business logic are combined in a single object, an object containing business logic must be modified every time the user interface is changed. This often introduces errors and requires the retesting of business logic after every minimal user interface change.</p>
+                    <div class="content__mvcPattern__text__note">
+                        <h3>Note</h3>
+                        <p>Both the view and the controller depend on the model. However, the model depends on neither the view nor the controller. This is one of the key benefits of the separation. This separation allows the model to be built and tested independent of the visual presentation.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="content__modelRespons">
+                <h2>Model Responsibilities</h2>
+                <div class="content__modelRespons__text">
+                    <p>The Model in an MVC application represents the state of the application and any business logic or operations that should be performed by it. Business logic should be encapsulated in the model, along with any implementation logic for persisting the state of the application. Strongly-typed views typically use ViewModel types designed to contain the data to display on that view. The controller creates and populates these ViewModel instances from the model.</p>
+                </div>
+            </div>
+            <div class="content__controllerReposnce">
+                <h2>Controller Responsibilities</h2>
+                <div class="content__controllerReposnce__text">
+                    <p>Controllers are the components that handle user interaction, work with the model, and ultimately select a view to render. In an MVC application, the view only displays information; the controller handles and responds to user input and interaction. In the MVC pattern, the controller is the initial entry point, and is responsible for selecting which model types to work with and which view to render (hence its name - it controls how the app responds to a given request).</p>
+                </div>
+                <div class="content__controllerReposnce__note">
+                    <h3>Note</h3>
+                    <p>Controllers shouldn't be overly complicated by too many responsibilities. To keep controller logic from becoming overly complex, push business logic out of the controller and into the domain model.</p>
+                </div>
+                <div class="tip">
+                    <h3>Tip</h3>
+                    <p>If you find that your controller actions frequently perform the same kinds of actions, move these common actions into <a href="https://learn.microsoft.com/en-us/aspnet/core/mvc/overview?view=aspnetcore-9.0#filters">filters</a>.</p>
+                </div>
+            </div>
+            <div class="content__aspnetCoreMVC", id="aspnetCoreMVC">
+                <h2>ASP.NET Core MVC</h2>
+                <p>The ASP.NET Core MVC framework is a lightweight, open source, highly testable presentation framework optimized for use with ASP.NET Core.</p>
+                <p>ASP.NET Core MVC provides a patterns-based way to build dynamic websites that enables a clean separation of concerns. It gives you full control over markup, supports TDD-friendly development and uses the latest web standards.</p>
+            </div>
+            <div class="content__rounting", id="routing">
+                <h2>Routing</h2>
+                <div class="content__rounting__text">
+                    <p>ASP.NET Core MVC is built on top of <a href="https://learn.microsoft.com/en-us/aspnet/core/fundamentals/routing?view=aspnetcore-9.0">ASP.NET Core's routing</a>, a powerful URL-mapping component that lets you build applications that have comprehensible and searchable URLs. This enables you to define your application's URL naming patterns that work well for search engine optimization (SEO) and for link generation, without regard for how the files on your web server are organized. You can define your routes using a convenient route template syntax that supports route value constraints, defaults and optional values.</p>
+                    <p>Convention-based routing enables you to globally define the URL formats that your application accepts and how each of those formats maps to a specific action method on a given controller. When an incoming request is received, the routing engine parses the URL and matches it to one of the defined URL formats, and then calls the associated controller's action method.</p>
+                </div>
+                <div class="content__rounting_code">
+                    <code>routes.MapRoute(name: "Default", template: "{controller=Home}/{action=Index}/{id?}");</code>
+                </div>
+                <div class="content__rounting__text">
+                    <p>Attribute routing enables you to specify routing information by decorating your controllers and actions with attributes that define your application's routes. This means that your route definitions are placed next to the controller and action with which they're associated.</p>
+                </div>
+                <div class="content__rounting_code">
+                    <code>
+                        <p>Route("api/[controller]")]</p>
+                        <p>public class ProductsController : Controller</p>
+                        <p>{</p>
+                            <p>[HttpGet("{id}")]</p>
+                            <p>public IActionResult GetProduct(int id)</p>
+                            <p>{</p>
+                                <p>...</p>
+                            <p>}</p>
+                        <p>}</p>
+                    </code>
+                </div>
+            </div>
+            <div class="content__modelBinding", id="modelBinding">
+                <h2>Model binding</h2>
+                <div class="content__modelBinding__text">
+                    <p>ASP.NET Core MVC <a href="https://learn.microsoft.com/en-us/aspnet/core/mvc/models/model-binding?view=aspnetcore-9.0">model binding</a> converts client request data (form values, route data, query string parameters, HTTP headers) into objects that the controller can handle. As a result, your controller logic doesn't have to do the work of figuring out the incoming request data; it simply has the data as parameters to its action methods.</p>
+                </div>
+                <div class="content__modelBinding__code">
+                    <code>
+                        <p>public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null) { ... }</p>
+                    </code>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        
+    </footer>
+</body>
+</html>

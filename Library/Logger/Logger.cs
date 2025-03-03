@@ -13,7 +13,7 @@ public class Logger : ILogger, IDisposable
         // #if DEBUG
         //     _logFileName = string.Format($"../../../Logs/{logFileName}");
         // #endif
-        _logFileName = string.Format($"./Logs/{logFileName}.log");
+        _logFileName = string.Format($"./Logs/test.log");
         _logOutStream = new FileStream(_logFileName, FileMode.Create);
         _logOutStream = new FileStream(_logFileName, FileMode.Append);
         _logWriter = new StreamWriter(_logOutStream);

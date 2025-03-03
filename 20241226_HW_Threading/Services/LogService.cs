@@ -28,11 +28,8 @@ public class Logger : ILogger, IDisposable
         }
     }
 
-    public void Write(string message)
+    public async Task Write(string message)
     {
-        lock (_objSync)
-        {
-            _logWriter.Write(string.Format($"{DateTime.Now}: {message}\n"));
-        }
+        await _logWriter.WriteLineAsync(string.Format($"{DateTime.Now}: {message}\n"));
     }
 }

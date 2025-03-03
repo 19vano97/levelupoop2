@@ -1,4 +1,5 @@
 ﻿using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using _20241226_HW_Threading.Handlers;
 using _20241226_HW_Threading.Interfaces;
 using _20241226_HW_Threading.Model;
@@ -7,7 +8,7 @@ using GenerateRandomArray;
 
 internal class Program
 {
-    private static void Main(string[] args)
+    private static async Task Main(string[] args)
     {
         var timeTrackerSeq = new TimeTracker();
         GenerateDouble1d d1Gen = new GenerateDouble1d(100000);
@@ -79,8 +80,8 @@ internal class Program
 
             System.Console.WriteLine("Sequence");
             timeTrackerSeq.On();
-            bubbleSortSeq.Run();
-            bubbleSortSeq1.Run();
+            await bubbleSortSeq.Run();
+            await bubbleSortSeq1.Run();
 
             timeTrackerSeq.Off();
         }
@@ -89,24 +90,26 @@ internal class Program
             var timeTrackerPar = new TimeTracker();
     
             var bubbleSortTread = new BubbleSort(d1);
-            Thread bubbleThread = new Thread(bubbleSortTread.Run);
-
             var bubbleSortTread1 = new BubbleSort(d1);
-            Thread bubbleThread1 = new Thread(bubbleSortTread1.Run);
+            
+            System.Console.WriteLine("Parallel");
+            timeTrackerPar.On();
+
+            
+
+            var tasks = new List<Func<Task>>
+            {
+                bubbleSortTread.Run,
+                bubbleSortTread1.Run
+            };
+
+            await Task.WhenAll(tasks.AsParallel().Select(async task => await task()));
 
 
             //loadingThreadSort.Start();
-            System.Console.WriteLine("Parallel");
-            
-            timeTrackerPar.On();
-
-            bubbleThread.Start();
-            bubbleThread1.Start();
-
-            bubbleThread.Join();
-            bubbleThread1.Join();
 
             timeTrackerPar.Off();
+
         }
     }
 }

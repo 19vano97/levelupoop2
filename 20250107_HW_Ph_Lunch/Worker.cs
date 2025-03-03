@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using LoggerLibrary;
 
 namespace _20250107_HW_Ph_Lunch;
@@ -8,8 +9,8 @@ public class Worker
     private Thread[] _threads;
     private ILogger _logger;
     private object _m;
-    private Mutex _mutex;
-    private bool _mutexWasCreated;
+    private Mutex[] _mutexs;
+    private Dictionary<int, bool> _ownedCreated;
     private int _threadsCount;
     //private SemaphoreSlim[] _semaphores;
     private Statuses[] _states;
@@ -21,8 +22,8 @@ public class Worker
         string fileName = DateTime.Now.ToString("yyyy-MM-dd’T’HH:mm:ss");
         _logger = new Logger($"log_{fileName}");
         _m = new object();
-        _mutexWasCreated = false;
-        _mutex = new Mutex();
+        _ownedCreated = new Dictionary<int, bool>();
+        _mutexs = new Mutex[_threadsCount];
         // _semaphores = new SemaphoreSlim[countOfThreads];
         _states = new Statuses[countOfThreads];
         
@@ -136,6 +137,12 @@ public class Worker
         {
             for (var i = 0; i < _threadsCount; i++)
             {
+                _mutexs[i] = new Mutex();
+                _ownedCreated[i] = false;
+            }
+
+            for (var i = 0; i < _threadsCount; i++)
+            {
                 int index = i;
                 _threads[i] = new Thread(() => ThreadRun(index));
             }
@@ -155,64 +162,67 @@ public class Worker
             _logger.Dispose();
         }
     
-        private void ThreadRun(int index)
+        private async Task ThreadRun(int index)
         {
             while (true)
             {
-                //CheckMutex();
                 Idle(index);
-                Take(index);
+                await Take(index);
                 Active(index);
-                Put(index);
+                await Put(index);
             }
         }
     
-        private void Take(int index)
+        private async Task Take(int index)
         {
-            _mutex.WaitOne();
-            try
+            lock (_m)
             {
-                lock (_m)
-                {
-                    _states[index] = Statuses.Waiting;
-                    PrintStatus(index);
-                    Test(index);
-                }
+                _states[index] = Statuses.Waiting;
+                PrintStatus(index);
+                Test(index);
             }
-            finally
-            {
-                _mutex.ReleaseMutex();
-            }
-    
-            //_mutex.WaitOne();
         }
     
-        private void Put(int index)
+        private async Task Put(int index)
         {
-            _mutex.WaitOne();
+            // if (_states[index] == Statuses.Active && _ownedCreated[index])
+            // {
+            //     try
+            //     {
+            //         _mutexs[index].ReleaseMutex();
+            //         ReleaseThread(index);
+            //         _ownedCreated[index] = false;
+            //     }
+            //     catch (System.ApplicationException ex)
+            //     {
+            //         System.Console.WriteLine($"Release thread: {index}");
+            //         System.Console.WriteLine(ex);
+            //         ReleaseThread(index);
+            //     }
+            // }
+            // else
+            // {
+            //     ReleaseThread(index);
+            // }
 
-            try
+            lock (_m)
             {
-                lock (_m)
-                {
-                    _states[index] = Statuses.Idle;
-                    Test(Left(index));
-                    Test(Right(index));
-                }
-            }
-            finally
-            {
-                _mutex.ReleaseMutex();
+                _states[index] = Statuses.Idle;
+                Test(Left(index));
+                Test(Right(index));
+                PrintStatus(index);
             }
         }
     
-        private void Test(int index)
+        private async Task Test(int index)
         {
             if (_states[index] == Statuses.Waiting && _states[Left(index)] != Statuses.Active
                                                    && _states[Right(index)] != Statuses.Active)
             {
                 _states[index] = Statuses.Active;
-                //_mutex.ReleaseMutex();
+                PrintStatus(index);
+                _mutexs[index].WaitOne();
+                _ownedCreated[index] = true;
             }
         }
     
@@ -228,13 +238,12 @@ public class Worker
     
         private void Idle(int index)
         {
-            PrintStatus(index);
+            // PrintStatus(index);
             Thread.Sleep(1000);
         }
     
         private void Active(int index)
         {
-            PrintStatus(index);
             Thread.Sleep(1000);
         }
 
@@ -244,11 +253,17 @@ public class Worker
             System.Console.WriteLine($"Thread {index} Status: {_states[index]}");
         }
 
-        private void CheckMutex()
+        private void ReleaseThread(int index)
         {
-            if (!_mutexWasCreated)
+            _logger.Write($"Thread {index} tried to release a mutex it doesn't own.");
+            System.Console.WriteLine($"Thread {index} tried to release a mutex it doesn't own.");
+        }
+
+        private void CheckMutex(int index)
+        {
+            if (!_ownedCreated[index])
             {
-                _mutex = Mutex.OpenExisting("test");
+                _mutexs[index] = Mutex.OpenExisting(index.ToString());
             }
         }
     #endregion

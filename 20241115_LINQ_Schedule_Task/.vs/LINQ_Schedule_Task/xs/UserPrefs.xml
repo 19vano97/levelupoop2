@@ -1,10 +1,5 @@
 ﻿<Properties StartupConfiguration="{8D104054-F0FA-4FA8-A867-82E7DD94F774}|Default">
-  <MonoDevelop.Ide.ItemProperties.LINQ__Schedule__Task PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/ivanhontar/Work/levelUp/levelupoop2/20241115_LINQ_Schedule_Task/Program.cs" relfile="Program.cs" line="101" column="1" />
-    </BreakpointStore>
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="TeacherStudentsDataModel.cs">
     <Files>
       <File FileName="Program.cs" Line="99" Column="77" IsPinned="True" />
@@ -19,8 +14,8 @@
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="LINQ_Schedule_Task">
-            <Node name="LINQ_Schedule_Task">
+          <Node name="LINQ_Schedule_Task" expanded="True">
+            <Node name="LINQ_Schedule_Task" expanded="True">
               <Node name="TeacherStudentsDataModel.cs" selected="True" />
             </Node>
           </Node>
@@ -28,7 +23,12 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/ivanhontar/Work/levelUp/levelupoop2/20241115_LINQ_Schedule_Task/Program.cs" relfile="Program.cs" line="101" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.LINQ__Schedule__Task PreferredExecutionTarget="MonoDevelop.Default" />
   <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
 </Properties>

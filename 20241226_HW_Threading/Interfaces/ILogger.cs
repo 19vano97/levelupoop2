@@ -4,5 +4,5 @@ namespace _20241226_HW_Threading.Interfaces;
 
 public interface ILogger
 {
-    public void Write(string message);
+    public Task Write(string message);
 }
